@@ -4,7 +4,7 @@ class SitemapPage {
   }
 
   async navigateToSitemap() {
-    await this.page.goto('https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/sitemap');
+    await this.page.goto('https://dev.abelini.com/sitemap');
   }
 
   // Get URLs from sitemap.xml
@@ -81,7 +81,7 @@ async validateLinks(links) {
 
 async validateAllCategoriesFromSitemap() {
 
-  await this.page.goto('https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/sitemap');
+  await this.page.goto('https://dev.abelini.com/sitemap');
 
   const categoryLocator = this.page.locator('p.mt-2.text-center.text-p-18.uppercase.font-bold');
 
@@ -132,7 +132,7 @@ async validateAllCategoriesFromSitemap() {
       );
 
       // go back to sitemap
-      await this.page.goto('https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/sitemap');
+      await this.page.goto('https://dev.abelini.com/sitemap');
 
     } catch (error) {
 

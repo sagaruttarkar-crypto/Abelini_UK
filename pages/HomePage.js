@@ -35,7 +35,7 @@ class HomePage extends BasePage {
   }
 
   async loginToDevStore(email) {
-    await this.page.goto('https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/', {
+    await this.page.goto('https://dev.abelini.com/', {
       waitUntil: 'domcontentloaded'
     });
 
