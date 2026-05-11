@@ -1,0 +1,21 @@
+
+===== PROD SITEMAP VALIDATION =====
+
+Total Main Sitemaps Found: 4
+
+Main Sitemap: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/sitemap_category.xml
+Status Code: 200
+
+Total Inner URLs: 221
+
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/engagement-rings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/diamond-rings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/wedding-rings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/earrings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/pendants ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/bracelets ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/diamond-rings/half-eternity-rings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/diamond-rings/full-eternity-rings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/earrings/stud-earrings ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/pendants/solitaire-pendants ---> 200
+   ↳ https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/earrings/stud-earrings/round ---> 404

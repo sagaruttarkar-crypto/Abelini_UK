@@ -1,0 +1,28 @@
+
+===== PROD SITEMAP VALIDATION =====
+
+Total Main Sitemaps Found: 4
+
+Main Sitemap: https://www.abelini.com/sitemap_category.xml
+Status Code: 200
+
+Total Inner URLs: 0
+
+
+--------------------------------------
+
+Main Sitemap: https://www.abelini.com/sitemap_product.xml
+Status Code: 403
+
+Main Sitemap: https://www.abelini.com/sitemap_blog.xml
+Status Code: 403
+
+Main Sitemap: https://www.abelini.com/sitemap_static.xml
+Status Code: 403
+
+
+===== BROKEN URL REPORT =====
+
+https://www.abelini.com/sitemap_product.xml -> 403
+https://www.abelini.com/sitemap_blog.xml -> 403
+https://www.abelini.com/sitemap_static.xml -> 403

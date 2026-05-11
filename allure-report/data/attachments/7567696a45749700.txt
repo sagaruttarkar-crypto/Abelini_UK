@@ -1,0 +1,2 @@
+Running ENV: DEV
+BaseURL: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/

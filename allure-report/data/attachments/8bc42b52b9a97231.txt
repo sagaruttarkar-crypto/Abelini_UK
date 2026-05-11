@@ -1,0 +1,61 @@
+
+===== PROD SITEMAP VALIDATION =====
+
+Base Sitemap Status: 200
+Total Main Sitemaps Found: 4
+
+Main Sitemap: https://www.abelini.com/sitemap_category.xml
+Status Code: 403
+
+Main Sitemap: https://www.abelini.com/sitemap_product.xml
+Status Code: 403
+
+Main Sitemap: https://www.abelini.com/sitemap_blog.xml
+Status Code: 403
+
+Main Sitemap: https://www.abelini.com/sitemap_static.xml
+Status Code: 200
+
+Total Inner URLs: 32
+
+   ↳ https://www.abelini.com/warranty-and-care  --->  200
+   ↳ https://www.abelini.com/finance-new  --->  200
+   ↳ https://www.abelini.com/about-us  --->  200
+   ↳ https://www.abelini.com/black-diamond-education  --->  200
+   ↳ https://www.abelini.com/christmas-earring  --->  200
+   ↳ https://www.abelini.com/data-retention  --->  200
+   ↳ https://www.abelini.com/diamond-carat  --->  200
+   ↳ https://www.abelini.com/diamond-certificate  --->  200
+   ↳ https://www.abelini.com/diamond-clarity  --->  200
+   ↳ https://www.abelini.com/diamond-colour  --->  200
+   ↳ https://www.abelini.com/diamond-cut  --->  200
+   ↳ https://www.abelini.com/diamond-education  --->  200
+   ↳ https://www.abelini.com/diamond-shape  --->  200
+   ↳ https://www.abelini.com/earring-backing-guide  --->  200
+   ↳ https://www.abelini.com/ethical-jewellery  --->  200
+   ↳ https://www.abelini.com/fair-price-guarantee  --->  200
+   ↳ https://www.abelini.com/free-resize-policy  --->  200
+   ↳ https://www.abelini.com/gemstone-education  --->  200
+   ↳ https://www.abelini.com/hallmarking  --->  200
+   ↳ https://www.abelini.com/lab-grown-diamond-education  --->  200
+   ↳ https://www.abelini.com/terms-of-use  --->  200
+   ↳ https://www.abelini.com/virtual-try  --->  200
+   ↳ https://www.abelini.com/why-abelini  --->  200
+   ↳ https://www.abelini.com/jewellery-insurance  --->  200
+   ↳ https://www.abelini.com/free-shipping  --->  200
+   ↳ https://www.abelini.com/return-and-exchange  --->  200
+   ↳ https://www.abelini.com/metal-guide  --->  200
+   ↳ https://www.abelini.com/jewellery-care  --->  200
+   ↳ https://www.abelini.com/faq  --->  200
+   ↳ https://www.abelini.com/  --->  200
+   ↳ https://www.abelini.com/customer-reviews  --->  200
+   ↳ https://www.abelini.com/privacy-policy  --->  200
+
+---------------------------------------
+
+
+===== BROKEN URL REPORT =====
+
+https://www.abelini.com/sitemap_category.xml
+https://www.abelini.com/sitemap_product.xml
+https://www.abelini.com/sitemap_blog.xml

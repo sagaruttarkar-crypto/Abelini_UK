@@ -1,0 +1,18 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+allure-results/fe9480d1-37a2-45c5-9223-3549ff471c40-result.json
+allure-results/ed005433-8298-4f37-a8e3-f717eb0c79e6-result.json
+allure-results/af14648e-89e9-4242-9e05-6b1ceede38c8-attachment.txt
+allure-results/a9b6f81c-acb7-45bd-a37a-a869439fa128-attachment.txt
+allure-results/a1be25b4-dfbf-47df-a7c7-16b38445b9a5-result.json
+allure-results/06832666-f68c-43d1-a416-608aabc894b4-attachment.txt
+allure-results/454897b6-c351-4cfe-aa9b-dfdf8a7286f5-result.json
+allure-results/8348035c-ef78-4865-9887-93840e498fb9-result.json
+allure-results/
+alluere-report/

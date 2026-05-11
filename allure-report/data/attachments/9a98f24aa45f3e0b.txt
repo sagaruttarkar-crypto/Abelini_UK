@@ -1,0 +1,5 @@
+Running ENV: DEV
+BaseURL: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/
+Total links found: 93
+https://www.abelini.com/sale → 200
+https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/return-and-exchange → 404

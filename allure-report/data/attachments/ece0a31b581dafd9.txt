@@ -1,0 +1,9 @@
+❌ Broken link found: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/return-and-exchange → 404
+❌ Broken link found: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/fair-price-guarantee → 404
+❌ Broken link found: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/visit-us → 404
+❌ Broken link found: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/ready-to-deliver → 404
+❌ Navigation failed: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/wedding-rings
+   Reason: page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/wedding-rings", waiting until "domcontentloaded"
+

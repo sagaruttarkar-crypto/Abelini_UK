@@ -1,0 +1,1004 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Up To 15% Off Sale Ends In 03D 05H 53M 10S" [ref=e5] [cursor=pointer]:
+        - /url: https://www.abelini.com/sale
+        - generic [ref=e6]: Up To 15% Off Sale Ends In
+        - generic [ref=e7]:
+          - generic [ref=e8]: 03D
+          - generic [ref=e9]: 05H
+          - generic [ref=e10]: 53M
+          - generic [ref=e11]: 10S
+      - generic [ref=e15]:
+        - link "100% Money Back Guarantee" [ref=e17] [cursor=pointer]:
+          - /url: return-and-exchange
+        - link "Excellent 4.9 out of 5 Trustpilot Trustpilot" [ref=e19] [cursor=pointer]:
+          - /url: https://uk.trustpilot.com/review/abelini.com
+          - text: Excellent 4.9 out of 5
+          - img "Trustpilot" [ref=e20]
+          - text: Trustpilot
+        - link "Fairly Priced Diamonds" [ref=e22] [cursor=pointer]:
+          - /url: fair-price-guarantee
+      - generic [ref=e25]:
+        - list [ref=e27]:
+          - listitem [ref=e28]:
+            - link "+44 (0) 2038051270" [ref=e29] [cursor=pointer]:
+              - /url: tel:+442038051270
+              - img [ref=e30]
+              - text: +44 (0) 2038051270
+          - listitem [ref=e32]:
+            - link "Visit Us" [ref=e33] [cursor=pointer]:
+              - /url: https://www.abelini.com/book-appointment
+              - img [ref=e34]
+              - text: Visit Us
+        - link "Abelini" [ref=e38] [cursor=pointer]:
+          - /url: ""
+          - img "Abelini" [ref=e39]
+        - list [ref=e41]:
+          - listitem [ref=e42]:
+            - button "Login" [ref=e43] [cursor=pointer]:
+              - img [ref=e44]
+              - text: Login
+          - listitem [ref=e46]:
+            - button "Wish List" [ref=e47] [cursor=pointer]:
+              - img [ref=e48]
+              - text: Wish List
+          - listitem [ref=e50]:
+            - link "Cart (0)" [ref=e52] [cursor=pointer]:
+              - /url: https://www.abelini.com/index.php?route=checkout/cart
+              - img [ref=e53]
+              - text: Cart (0)
+      - navigation [ref=e56]:
+        - list [ref=e58]:
+          - listitem [ref=e59]:
+            - link "Engagement Rings" [ref=e60] [cursor=pointer]:
+              - /url: https://www.abelini.com/engagement-rings
+          - listitem [ref=e61]:
+            - link "Wedding & Eternity Rings" [ref=e62] [cursor=pointer]:
+              - /url: https://www.abelini.com/wedding-rings
+          - listitem [ref=e63]:
+            - link "Diamond Rings" [ref=e64] [cursor=pointer]:
+              - /url: https://www.abelini.com/diamond-rings
+          - listitem [ref=e65]:
+            - link "Earrings" [ref=e66] [cursor=pointer]:
+              - /url: https://www.abelini.com/earrings
+          - listitem [ref=e67]:
+            - link "Necklaces" [ref=e68] [cursor=pointer]:
+              - /url: https://www.abelini.com/pendants
+          - listitem [ref=e69]:
+            - link "Bracelets" [ref=e70] [cursor=pointer]:
+              - /url: https://www.abelini.com/bracelets
+          - listitem [ref=e71]:
+            - link "QuickShip" [ref=e72] [cursor=pointer]:
+              - /url: https://www.abelini.com/ready-to-deliver
+          - listitem [ref=e73]:
+            - button "Inspiration" [ref=e74] [cursor=pointer]
+          - listitem [ref=e75]:
+            - generic [ref=e76]:
+              - textbox "Search" [ref=e77]
+              - button "Search" [ref=e79] [cursor=pointer]
+    - main [ref=e82]:
+      - list [ref=e87]:
+        - listitem [ref=e88]:
+          - link "Home" [ref=e89] [cursor=pointer]:
+            - /url: https://www.abelini.com
+        - listitem [ref=e90]:
+          - text: /
+          - link "Engagement Rings" [ref=e91] [cursor=pointer]:
+            - /url: https://www.abelini.com/engagement-rings
+        - listitem [ref=e92]:
+          - text: /
+          - link "Solitaire" [ref=e93] [cursor=pointer]:
+            - /url: https://www.abelini.com/engagement-rings/classic-solitaire
+        - listitem [ref=e94]:
+          - text: /
+          - link "Low Set Round 9k White Gold Lab Grown Diamond Classic Solitaire Engagement Rings" [ref=e95] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e98]:
+        - generic [ref=e101]:
+          - generic [ref=e106]:
+            - list [ref=e107]:
+              - listitem [ref=e108] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 0" [ref=e109]
+              - listitem [ref=e110] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 1" [ref=e111]
+              - listitem [ref=e112] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 2" [ref=e113]
+              - listitem [ref=e114] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 3" [ref=e115]
+            - list [ref=e116]:
+              - listitem [ref=e117] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Popup 1" [ref=e118]
+            - list [ref=e119]:
+              - listitem [ref=e120] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 0" [ref=e121]
+              - listitem [ref=e122] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 1" [ref=e123]
+              - listitem [ref=e124] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 2" [ref=e125]
+              - listitem [ref=e126] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 3" [ref=e127]
+              - listitem [ref=e128] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 4" [ref=e129]
+              - listitem [ref=e130] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 5" [ref=e131]
+            - list [ref=e132]:
+              - listitem [ref=e133] [cursor=pointer]:
+                - img "Video" [ref=e134]
+              - listitem [ref=e135] [cursor=pointer]:
+                - img "Video" [ref=e136]
+              - listitem [ref=e137] [cursor=pointer]:
+                - img "Video" [ref=e138]
+              - listitem [ref=e139] [cursor=pointer]:
+                - img "Video" [ref=e140]
+              - listitem [ref=e141] [cursor=pointer]:
+                - img "Video" [ref=e142]
+              - listitem [ref=e143] [cursor=pointer]:
+                - img "Video" [ref=e144]
+              - listitem [ref=e145] [cursor=pointer]:
+                - img "Video" [ref=e146]
+              - listitem [ref=e147] [cursor=pointer]:
+                - img "Video" [ref=e148]
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - generic [ref=e151]:
+                - iframe [ref=e153]:
+                  - generic [ref=f11e3]:
+                    - iframe [ref=f11e4]:
+                      
+                    - generic [ref=f11e5]:
+                      - img [ref=f11e6]
+                      - paragraph [ref=f11e11]: Drag to rotate
+                - generic [ref=e154]:
+                  - button "Zoom image" [ref=e155] [cursor=pointer]:
+                    - img "Zoom" [ref=e156]
+                  - img "Solitaire Engagement Rings Platinum / Rose / White Gold Brilliant Cut Lab Grown Diamond" [ref=e157]
+                - generic [ref=e158]: "Image Shown: 1.00 ct"
+              - table [ref=e162] [cursor=pointer]:
+                - rowgroup [ref=e163]:
+                  - row "Try On" [ref=e164]:
+                    - cell [ref=e165]
+                    - cell "Try On" [ref=e167]
+            - list [ref=e169]:
+              - listitem [ref=e170] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 0" [ref=e171]
+              - listitem [ref=e172] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 1" [ref=e173]
+              - listitem [ref=e174] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 2" [ref=e175]
+              - listitem [ref=e176] [cursor=pointer]:
+                - img "Low Set Round Shape Lab Grown Diamond Classic Solitaire engagement rings Product 3" [ref=e177]
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - heading "Low Set Round 9k White Gold Lab Grown Diamond Classic Solitaire Engagement Rings" [level=1] [ref=e182]
+            - paragraph [ref=e183]: "SKU: RINE3170-LBG-RND"
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - paragraph
+              - paragraph [ref=e189]: 12600+ Customer Reviews
+              - paragraph
+            - generic [ref=e191] [cursor=pointer]:
+              - img [ref=e192]
+              - img [ref=e194]
+              - img [ref=e196]
+              - img [ref=e198]
+              - img [ref=e200]
+          - alert [ref=e203]:
+            - img "delivery" [ref=e204]
+            - generic [ref=e205]:
+              - paragraph [ref=e206]:
+                - generic [ref=e207]:
+                  - generic [ref=e208]: Order within 5 hrs and
+                  - generic [ref=e209]: 53 mins
+                - text: for Free delivery by
+                - text: .
+              - paragraph [ref=e210]:
+                - text: Need it sooner? Shop our
+                - link "In-Stock Products" [ref=e211] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                - text: or call us on
+                - link "02038051270" [ref=e212] [cursor=pointer]:
+                  - /url: tel:02038051270
+                - text: .
+          - generic [ref=e214]:
+            - generic [ref=e216]:
+              - generic [ref=e217]:
+                - generic [ref=e218]: High Street
+                - generic [ref=e219]: "0"
+              - generic [ref=e221]: /
+              - generic [ref=e222]:
+                - generic [ref=e223]: Our price
+                - generic [ref=e224]: "0"
+              - generic [ref=e226]: /
+              - generic [ref=e228]: £364
+              - paragraph [ref=e230] [cursor=pointer]:
+                - generic [ref=e232]: Or £30.34 / Month - Finance Calculator
+                - img [ref=e233]
+            - generic [ref=e235]:
+              - alert [ref=e236]:
+                - generic [ref=e237]:
+                  - img "Timer" [ref=e239]
+                  - generic [ref=e240]:
+                    - generic [ref=e241]: Up To 15% Off Sale Ends In
+                    - generic [ref=e242]:
+                      - generic [ref=e243]: "03d :"
+                      - generic [ref=e244]: "05h :"
+                      - generic [ref=e245]: "53m :"
+                      - generic [ref=e246]: 10s
+              - paragraph [ref=e248] [cursor=pointer]:
+                - text: Price Match Guarantee*
+                - img [ref=e249]
+          - generic [ref=e252]:
+            - button "Customise & Buy" [ref=e254] [cursor=pointer]
+            - link "Book Store Appointment" [ref=e256] [cursor=pointer]:
+              - /url: javascript:void(0);
+          - generic [ref=e259]:
+            - generic [ref=e261]:
+              - generic [ref=e263]:
+                - paragraph [ref=e264]: "Metal:"
+                - list [ref=e266]:
+                  - listitem [ref=e269]:
+                    - generic "9K White Gold" [ref=e270] [cursor=pointer]:
+                      - generic [ref=e271]: 9K
+                  - listitem [ref=e274]:
+                    - generic "14K White Gold" [ref=e275] [cursor=pointer]:
+                      - generic [ref=e276]: 14K
+                  - listitem [ref=e279]:
+                    - generic "18K White Gold" [ref=e280] [cursor=pointer]:
+                      - generic [ref=e281]: 18K
+                  - listitem [ref=e284]:
+                    - generic "9K Yellow Gold" [ref=e285] [cursor=pointer]:
+                      - generic [ref=e286]: 9K
+                  - listitem [ref=e289]:
+                    - generic "14K Yellow Gold" [ref=e290] [cursor=pointer]:
+                      - generic [ref=e291]: 14K
+                  - listitem [ref=e294]:
+                    - generic "18K Yellow Gold" [ref=e295] [cursor=pointer]:
+                      - generic [ref=e296]: 18K
+                  - listitem [ref=e299]:
+                    - generic "9K Rose Gold" [ref=e300] [cursor=pointer]:
+                      - generic [ref=e301]: 9K
+                  - listitem [ref=e304]:
+                    - generic "14K Rose Gold" [ref=e305] [cursor=pointer]:
+                      - generic [ref=e306]: 14K
+                  - listitem [ref=e309]:
+                    - generic "18K Rose Gold" [ref=e310] [cursor=pointer]:
+                      - generic [ref=e311]: 18K
+                  - listitem [ref=e314]:
+                    - generic "950 Platinum" [ref=e315] [cursor=pointer]:
+                      - generic [ref=e316]: PLT
+              - generic [ref=e317]:
+                - generic [ref=e318]:
+                  - generic [ref=e319]: Ring size
+                  - combobox "Ring size" [ref=e320]:
+                    - option "I dont know"
+                    - option "H"
+                    - option "H 1/2"
+                    - option "I"
+                    - option "I 1/2"
+                    - option "J"
+                    - option "J 1/2"
+                    - option "K"
+                    - option "K 1/2"
+                    - option "L"
+                    - option "L 1/2"
+                    - option "M" [selected]
+                    - option "M 1/2"
+                    - option "N"
+                    - option "N 1/2"
+                    - option "O"
+                    - option "O 1/2"
+                    - option "P"
+                    - option "P 1/2"
+                    - option "Q"
+                    - option "Q 1/2"
+                    - option "R"
+                    - option "R 1/2"
+                    - option "S"
+                    - option "S 1/2"
+                    - option "T"
+                    - option "T 1/2"
+                    - option "U"
+                    - option "U 1/2"
+                    - option "V"
+                    - option "V 1/2"
+                    - option "W"
+                    - option "W 1/2"
+                    - option "X"
+                    - option "X 1/2"
+                    - option "Y"
+                    - option "Y 1/2"
+                    - option "Z"
+                    - option "Z 1/2"
+                - link "Ring Size Guide" [ref=e321] [cursor=pointer]:
+                  - /url: https://www.abelini.com/ring-size-guide
+                  - img [ref=e322]
+                  - text: Ring Size Guide
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - text: Setting Style
+                - list [ref=e327]:
+                  - listitem [ref=e328]:
+                    - link "Plain" [ref=e329] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Plain" [ref=e330]
+                    - generic [ref=e331] [cursor=pointer]: Plain
+                  - listitem [ref=e332]:
+                    - link "Hidden Halo" [ref=e333] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Hidden Halo" [ref=e334]
+                    - generic [ref=e335] [cursor=pointer]: Hidden Halo
+              - generic [ref=e336]:
+                - text: Band Style
+                - list [ref=e337]:
+                  - listitem [ref=e338]:
+                    - link "Plain" [ref=e339] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Plain" [ref=e340]
+                    - generic [ref=e341] [cursor=pointer]: Plain
+                  - listitem [ref=e342]:
+                    - link "Pave" [ref=e343] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Pave" [ref=e344]
+                    - generic [ref=e345] [cursor=pointer]: Pave
+              - generic [ref=e346]:
+                - generic [ref=e347]:
+                  - text: Shank Width
+                  - link "How to Choose?" [ref=e348] [cursor=pointer]:
+                    - /url: javascript:void(0);
+                    - img [ref=e349]
+                    - text: How to Choose?
+                - list [ref=e351]:
+                  - listitem [ref=e352]:
+                    - link "Standard" [ref=e353] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Standard" [ref=e354]
+                    - generic [ref=e355] [cursor=pointer]: Standard
+                  - listitem [ref=e356]:
+                    - link "Large" [ref=e357] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Large" [ref=e358]
+                    - generic [ref=e359] [cursor=pointer]: Large
+            - group "Basic example" [ref=e360]:
+              - button "Diamond Customisation" [ref=e361] [cursor=pointer]
+              - button "Choose Specific Diamond" [ref=e362] [cursor=pointer]
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - generic [ref=e365]:
+                  - text: Stone Type
+                  - link "How to Choose?" [ref=e366] [cursor=pointer]:
+                    - /url: https://www.abelini.com/index.php?route=information/lab_grown_diamond_guide|popup#carateducation-popup
+                    - img [ref=e367]
+                    - text: How to Choose?
+                - list [ref=e369]:
+                  - listitem [ref=e370]:
+                    - link "Lab Grown Lab Grown Diamond" [ref=e371] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Lab Grown" [ref=e372]
+                      - generic [ref=e373]: Lab Grown Diamond
+                  - listitem [ref=e374]:
+                    - link "Diamond Natural Diamond" [ref=e375] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Diamond" [ref=e376]
+                      - generic [ref=e377]: Natural Diamond
+                  - listitem [ref=e378]:
+                    - link "Moissanite moissanite" [ref=e379] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Moissanite" [ref=e380]
+                      - generic [ref=e381]: moissanite
+                  - listitem [ref=e382]:
+                    - link "Black Black Diamond" [ref=e383] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Black" [ref=e384]
+                      - generic [ref=e385]: Black Diamond
+                  - listitem [ref=e386]:
+                    - link "amethyst amethyst" [ref=e387] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "amethyst" [ref=e388]
+                      - generic [ref=e389]: amethyst
+                  - listitem [ref=e390]:
+                    - link "ruby ruby" [ref=e391] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "ruby" [ref=e392]
+                      - generic [ref=e393]: ruby
+                  - listitem [ref=e394]:
+                    - link "emerald emerald" [ref=e395] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "emerald" [ref=e396]
+                      - generic [ref=e397]: emerald
+                  - listitem [ref=e398]:
+                    - link "blue sapphire blue sapphire" [ref=e399] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "blue sapphire" [ref=e400]
+                      - generic [ref=e401]: blue sapphire
+                  - listitem [ref=e402]:
+                    - link "Garnet Garnet" [ref=e403] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Garnet" [ref=e404]
+                      - generic [ref=e405]: Garnet
+                  - listitem [ref=e406]:
+                    - link "aquamarine aquamarine" [ref=e407] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "aquamarine" [ref=e408]
+                      - generic [ref=e409]: aquamarine
+                  - listitem [ref=e410]:
+                    - link "citrine citrine" [ref=e411] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "citrine" [ref=e412]
+                      - generic [ref=e413]: citrine
+                  - listitem [ref=e414]:
+                    - link "peridot peridot" [ref=e415] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "peridot" [ref=e416]
+                      - generic [ref=e417]: peridot
+                  - listitem [ref=e418]:
+                    - link "topaz topaz" [ref=e419] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "topaz" [ref=e420]
+                      - generic [ref=e421]: topaz
+                  - listitem [ref=e422]:
+                    - link "Tourmaline Tourmaline" [ref=e423] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Tourmaline" [ref=e424]
+                      - generic [ref=e425]: Tourmaline
+              - generic [ref=e426]:
+                - text: Shape
+                - list [ref=e427]:
+                  - listitem [ref=e428]:
+                    - link "Round Round" [ref=e429] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Round" [ref=e430]
+                      - generic [ref=e431]: Round
+                  - listitem [ref=e432]:
+                    - link "princess princess" [ref=e433] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "princess" [ref=e434]
+                      - generic [ref=e435]: princess
+                  - listitem [ref=e436]:
+                    - link "emerald emerald" [ref=e437] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "emerald" [ref=e438]
+                      - generic [ref=e439]: emerald
+                  - listitem [ref=e440]:
+                    - link "Asscher Asscher" [ref=e441] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "Asscher" [ref=e442]
+                      - generic [ref=e443]: Asscher
+                  - listitem [ref=e444]:
+                    - link "oval oval" [ref=e445] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "oval" [ref=e446]
+                      - generic [ref=e447]: oval
+                  - listitem [ref=e448]:
+                    - link "pear pear" [ref=e449] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "pear" [ref=e450]
+                      - generic [ref=e451]: pear
+                  - listitem [ref=e452]:
+                    - link "heart heart" [ref=e453] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "heart" [ref=e454]
+                      - generic [ref=e455]: heart
+                  - listitem [ref=e456]:
+                    - link "marquise marquise" [ref=e457] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "marquise" [ref=e458]
+                      - generic [ref=e459]: marquise
+                  - listitem [ref=e460]:
+                    - link "cushion cushion" [ref=e461] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "cushion" [ref=e462]
+                      - generic [ref=e463]: cushion
+                  - listitem [ref=e464]:
+                    - link "radiant radiant" [ref=e465] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                      - img "radiant" [ref=e466]
+                      - generic [ref=e467]: radiant
+              - generic [ref=e468]:
+                - generic [ref=e469]:
+                  - text: Carat
+                  - link "How to Choose?" [ref=e470] [cursor=pointer]:
+                    - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup&product_id=1228&shape_code=&category_id=1#carateducation-new-popup
+                    - img [ref=e471]
+                    - text: How to Choose?
+                - generic [ref=e473]:
+                  - generic [ref=e474]: 0.20 ct
+                  - generic [ref=e477]: 0.20ct
+                  - generic [ref=e478]: 10.00 ct
+              - generic [ref=e479]:
+                - generic [ref=e480]:
+                  - text: Clarity
+                  - link "How to Choose?" [ref=e481] [cursor=pointer]:
+                    - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#clarityeducation-popup
+                    - img [ref=e482]
+                    - text: How to Choose?
+                - list [ref=e484]:
+                  - listitem [ref=e485]:
+                    - link "VVS1" [ref=e486] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e487]:
+                    - link "VVS2" [ref=e488] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e489]:
+                    - link "VS1" [ref=e490] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e491]:
+                    - link "VS2" [ref=e492] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e493]:
+                    - link "SI1" [ref=e494] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e495]:
+                    - link "SI2" [ref=e496] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - generic [ref=e497]:
+                - generic [ref=e498]:
+                  - text: Colour
+                  - link "How to Choose?" [ref=e499] [cursor=pointer]:
+                    - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#coloreducation-popup
+                    - img [ref=e500]
+                    - text: How to Choose?
+                - list [ref=e502]:
+                  - listitem [ref=e503]:
+                    - link "D" [ref=e504] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e505]:
+                    - link "E" [ref=e506] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e507]:
+                    - link "F" [ref=e508] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e509]:
+                    - link "G" [ref=e510] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e511]:
+                    - link "H" [ref=e512] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e513]:
+                    - link "I" [ref=e514] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - generic [ref=e515]:
+                - text: Cut
+                - list [ref=e516]:
+                  - listitem [ref=e517]:
+                    - link "Excellent" [ref=e518] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e519]:
+                    - link "Very Good" [ref=e520] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e521]:
+                    - link "Good" [ref=e522] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - generic [ref=e523]:
+                - generic [ref=e524]:
+                  - text: Certificate
+                  - link "How to Choose?" [ref=e525] [cursor=pointer]:
+                    - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#certeducation-popup
+                    - img [ref=e526]
+                    - text: How to Choose?
+                - list [ref=e528]:
+                  - listitem [ref=e529]:
+                    - link "ABELINI" [ref=e530] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - generic [ref=e531]:
+                - generic [ref=e533]: Engraving
+                - list [ref=e535]:
+                  - listitem [ref=e536]:
+                    - link "Add Engraving" [ref=e537] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - link "More Options" [ref=e540] [cursor=pointer]:
+                - /url: javascript:void(0);
+                - text: More Options
+            - generic [ref=e543]:
+              - link "Add to Cart" [ref=e545] [cursor=pointer]:
+                - /url: javascript:void(0);
+              - generic [ref=e546]:
+                - link "Add To Wishlist" [ref=e547] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                  - img [ref=e548]
+                - link "Drop A Hint" [ref=e550] [cursor=pointer]:
+                  - /url: javascript:void(0);
+              - link "Book Store Appointment" [ref=e553] [cursor=pointer]:
+                - /url: javascript:void(0);
+              - link "Order Sample" [ref=e555] [cursor=pointer]:
+                - /url: javascript:void(0);
+              - alert [ref=e557]:
+                - img "Delivery" [ref=e558]
+                - generic [ref=e559]:
+                  - paragraph [ref=e560]:
+                    - generic [ref=e561]:
+                      - generic [ref=e562]: Order within 5 hrs and
+                      - generic [ref=e563]: 53 mins
+                    - text: for Free delivery by
+                    - text: .
+                  - paragraph [ref=e564]:
+                    - text: Need it sooner? Shop our
+                    - link "In-Stock Products" [ref=e565] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                    - text: or call us on
+                    - link "02038051270" [ref=e566] [cursor=pointer]:
+                      - /url: tel:02038051270
+                    - text: .
+      - list [ref=e570]:
+        - listitem [ref=e571]:
+          - link "Abelini Free Resizing Free Resizing" [ref=e572] [cursor=pointer]:
+            - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#freesizing-popup
+            - img "Abelini Free Resizing" [ref=e573]
+            - paragraph [ref=e574]: Free Resizing
+        - listitem [ref=e575]:
+          - link "Abelini Free Delivery Free Delivery" [ref=e576] [cursor=pointer]:
+            - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#freedelivery-popup
+            - img "Abelini Free Delivery" [ref=e577]
+            - paragraph [ref=e578]: Free Delivery
+        - listitem [ref=e579]:
+          - link "Abelini 60-Day Risk-Free Returns 60-Day Risk-Free Returns" [ref=e580] [cursor=pointer]:
+            - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#sixtydaysreturn-popup
+            - img "Abelini 60-Day Risk-Free Returns" [ref=e581]
+            - paragraph [ref=e582]: 60-Day Risk-Free Returns
+        - listitem [ref=e583]:
+          - link "Abelini Diamond & Valuation Certificate Diamond & Valuation Certificate" [ref=e584] [cursor=pointer]:
+            - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#certeducation-popup
+            - img "Abelini Diamond & Valuation Certificate" [ref=e585]
+            - paragraph [ref=e586]:
+              - text: Diamond &
+              - text: Valuation Certificate
+        - listitem [ref=e587]:
+          - link "Abelini Attractive Packaging Attractive Packaging" [ref=e588] [cursor=pointer]:
+            - /url: javascript:void(0)
+            - img "Abelini Attractive Packaging" [ref=e589]
+            - paragraph [ref=e590]: Attractive Packaging
+        - listitem [ref=e591]:
+          - link "Abelini Lifetime Warranty Lifetime Warranty" [ref=e592] [cursor=pointer]:
+            - /url: https://www.abelini.com/index.php?route=information/diamond_education|popup#lifetimewarranty-popup
+            - img "Abelini Lifetime Warranty" [ref=e593]
+            - paragraph [ref=e594]: Lifetime Warranty
+      - generic [ref=e597]:
+        - generic [ref=e599]:
+          - heading "Product Description" [level=2] [ref=e600]
+          - paragraph [ref=e601]: "Reference Code: RINE3170-LBG"
+          - paragraph [ref=e603]: Introducing our Classic Solitaire Engagement Rings, available in 9K or 18K white, yellow, rose gold or platinum. Choose from a range of stone types including Natural Diamond, Lab Grown Diamond, Moissanite, Black Diamond, Amethyst, Ruby, Emerald, Blue Sapphire, Garnet, Aquamarine, Citrine, Peridot, Topaz and Tourmaline. Customise your ring with diamonds ranging from 0.20ct to 10.00ct, with options for D to I colour and IF to I1 clarity grades. Select from a variety of shapes such as Round, Princess, Emerald, Asscher, Oval, Pear, Heart, Marquise and Cushion. This timeless design is perfect for engagement rings that will be cherished for a lifetime.
+          - generic [ref=e604]:
+            - generic [ref=e605]:
+              - paragraph [ref=e606]: Products Information
+              - generic [ref=e607]:
+                - table:
+                  - rowgroup
+            - generic [ref=e609]:
+              - paragraph [ref=e610]: Similar Items
+              - table [ref=e612]:
+                - rowgroup [ref=e613]:
+                  - row "Solitaire Engagement Rings | White Gold Engagement Rings | Lab Grown Diamond | Round Engagement Rings" [ref=e614]:
+                    - cell "Solitaire Engagement Rings | White Gold Engagement Rings | Lab Grown Diamond | Round Engagement Rings" [ref=e615]:
+                      - link "Solitaire Engagement Rings" [ref=e617] [cursor=pointer]:
+                        - /url: https://www.abelini.com/engagement-rings/classic-solitaire
+                      - text: "|"
+                      - link "White Gold Engagement Rings" [ref=e619] [cursor=pointer]:
+                        - /url: https://www.abelini.com/engagement-rings/white-gold
+                      - text: "|"
+                      - link "Lab Grown Diamond" [ref=e621] [cursor=pointer]:
+                        - /url: https://www.abelini.com/engagement-rings/lab-grown-diamond
+                      - text: "|"
+                      - link "Round Engagement Rings" [ref=e623] [cursor=pointer]:
+                        - /url: https://www.abelini.com/engagement-rings/round
+        - generic [ref=e624]:
+          - heading "Product Review" [level=2] [ref=e625]
+          - iframe [ref=e628]:
+            - generic [ref=f8e3]:
+              - generic [ref=f8e4]:
+                - generic [ref=f8e5]:
+                  - img "5 out of 5 star rating on Trustpilot" [ref=f8e9]
+                  - generic [ref=f8e29]:
+                    - generic [ref=f8e30]: "5.0"
+                    - text: / 5
+                    - generic [ref=f8e31]: •
+                    - generic [ref=f8e32]:
+                      - strong [ref=f8e33]: "33"
+                      - text: reviews
+                - img "Trustpilot" [ref=f8e37]
+              - generic [ref=f8e43]:
+                - generic [ref=f8e44]:
+                  - generic [ref=f8e45]:
+                    - generic [ref=f8e46]: Nick FitzGerald, February 4
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e51]
+                  - generic [ref=f8e71]: This is a very beautiful piece of jewellery.
+                  - generic [ref=f8e72]: Verified, collected by Abelini
+                - generic [ref=f8e73]:
+                  - generic [ref=f8e74]:
+                    - generic [ref=f8e75]: Stuart Jackson, January 12
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e80]
+                  - generic [ref=f8e100]: Looks great. Feels nice. Sparkles.
+                  - generic [ref=f8e101]: Verified, collected by Abelini
+                - generic [ref=f8e102]:
+                  - generic [ref=f8e103]:
+                    - generic [ref=f8e104]: Michael Ford, January 10
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e109]
+                  - generic [ref=f8e129]: Fantastic
+                  - generic [ref=f8e130]: Verified, collected by Abelini
+                - generic [ref=f8e131]:
+                  - generic [ref=f8e132]:
+                    - generic [ref=f8e133]: Mr Pearce, January 1
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e138]
+                  - generic [ref=f8e158]: Just a great service with quality product!
+                  - generic [ref=f8e159]: Verified, collected by Abelini
+                - generic [ref=f8e160]:
+                  - generic [ref=f8e161]:
+                    - generic [ref=f8e162]: Jason, December 24
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e167]
+                  - generic [ref=f8e187]: I’m very happy with the ring. Exactly as ordered, and delivered in around ten days. Just waiting for the right time to pop the question!
+                  - generic [ref=f8e188]: Verified, collected by Abelini
+                - generic [ref=f8e189]:
+                  - generic [ref=f8e190]:
+                    - generic [ref=f8e191]: Scott Owens, November 16
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e196]
+                  - generic [ref=f8e216]: Exceptional
+                  - generic [ref=f8e217]: Verified, collected by Abelini
+                - generic [ref=f8e218]:
+                  - generic [ref=f8e219]:
+                    - generic [ref=f8e220]: Shwetha Selvaraj, November 9
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e225]
+                  - generic [ref=f8e245]: I have purchased diamond platinum ring for my mother. The most beautiful ring that I have ever purchased so far. The quality is amazing and the price is very convincing as well. I recommend abelini to everyone.
+                  - generic [ref=f8e246]: Verified, collected by Abelini
+                - generic [ref=f8e247]:
+                  - generic [ref=f8e248]:
+                    - generic [ref=f8e249]: Adrian Emery, November 6
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e254]
+                  - generic [ref=f8e274]: I love this ring , it is exactly as described and I cannot fault anything about it. Delighted and will certainly use Abelini again. First class.
+                  - generic [ref=f8e275]: Verified, collected by Abelini
+                - generic [ref=f8e276]:
+                  - generic [ref=f8e277]:
+                    - generic [ref=f8e278]: Greg, November 3
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e283]
+                  - generic [ref=f8e303]: Amazing quality product, outstanding.
+                  - img "Photo of product" [ref=f8e306] [cursor=pointer]
+                  - generic [ref=f8e307]: Verified, collected by Abelini
+                - generic [ref=f8e308]:
+                  - generic [ref=f8e309]:
+                    - generic [ref=f8e310]: Liam, November 3
+                    - img "5 out of 5 star rating on Trustpilot" [ref=f8e315]
+                  - generic [ref=f8e335]: As pictured. No issues and nicely packaged.
+                  - generic [ref=f8e336]: Verified, collected by Abelini
+                - button "Load more reviews" [ref=f8e337] [cursor=pointer]
+      - generic [ref=e631]:
+        - generic [ref=e632]:
+          - heading "Our Customers Love Us" [level=3] [ref=e633]
+          - paragraph [ref=e634]: More than 10000 happy customers all over the Europe
+          - generic [ref=e635]:
+            - link "12600+ Customer Reviews Customer-Review" [ref=e637] [cursor=pointer]:
+              - /url: /customer-reviews
+              - paragraph [ref=e639]: 12600+ Customer Reviews
+              - img "Customer-Review" [ref=e640]
+            - generic [ref=e641]:
+              - link "4.9 Out of 5 stars 6205 Reviews Google" [ref=e642] [cursor=pointer]:
+                - /url: https://customerreviews.google.com/v/merchant?q=abelini.com&c=GB&v=19&hl=en
+                - generic [ref=e643]:
+                  - heading "4.9" [level=4] [ref=e644]
+                  - paragraph [ref=e645]:
+                    - text: Out of
+                    - text: 5 stars
+                - paragraph [ref=e647]: 6205 Reviews
+                - img "Google" [ref=e648]
+              - link "4.9 Out of 5 stars 3242 Reviews Trust Shop" [ref=e649] [cursor=pointer]:
+                - /url: https://www.trustedshops.co.uk/buyerrating/info_X53E2D51D4B9C7693EC4DEB116F975061.html
+                - generic [ref=e650]:
+                  - heading "4.9" [level=4] [ref=e651]
+                  - paragraph [ref=e652]:
+                    - text: Out of
+                    - text: 5 stars
+                - paragraph [ref=e654]: 3242 Reviews
+                - img "Trust Shop" [ref=e655]
+              - iframe [ref=e658]:
+                - generic [ref=f2e2]:
+                  - link "Trustpilot reviews" [ref=f2e3] [cursor=pointer]:
+                    - /url: https://uk.trustpilot.com/review/abelini.com?utm_medium=trustbox&utm_source=Mini
+                    - img "Trustpilot" [ref=f2e7]
+                    - img "4.9 out of 5 star rating on Trustpilot" [ref=f2e15]
+                    - generic [ref=f2e35]:
+                      - generic [ref=f2e36]:
+                        - text: TrustScore
+                        - strong [ref=f2e37]: "4.9"
+                        - text: "|"
+                      - generic [ref=f2e38]:
+                        - strong [ref=f2e39]: 3,187
+                        - text: reviews
+                  - generic [ref=f2e40]: Rated 4.9 out of 5. 3187 reviews on Trustpilot
+                  - generic [ref=f2e41]: Click to view the company's Trustpilot profile
+        - link "View All Reviews" [ref=e660] [cursor=pointer]:
+          - /url: javascript:void(0)
+      - generic [ref=e662]:
+        - heading "As Seen On" [level=2] [ref=e665]
+        - list [ref=e668]:
+          - listitem [ref=e669]:
+            - img "Sun Newspaper" [ref=e670]
+          - listitem [ref=e671]:
+            - img "Daily Express" [ref=e672]
+          - listitem [ref=e673]:
+            - img "Marie Claire" [ref=e674]
+          - listitem [ref=e675]:
+            - img "Logos" [ref=e676]
+          - listitem [ref=e677]:
+            - img "Mirror Logo" [ref=e678]
+  - contentinfo [ref=e680]:
+    - generic [ref=e683]:
+      - paragraph [ref=e685]: Stay In Touch!
+      - generic [ref=e688]:
+        - textbox "Your Name *" [ref=e690]
+        - textbox "Your email *" [ref=e692]
+        - paragraph [ref=e694]:
+          - generic [ref=e695]:
+            - text: By subscribing, some personal data such as your name and email address are collected and stored securely for the purposes of sending you order updates, special offers, and other promotional materials. For further information on how we manage your data, please see our
+            - link "Privacy Notice" [ref=e696] [cursor=pointer]:
+              - /url: /privacy-policy#email-subscription
+        - button "Subscribe" [ref=e698] [cursor=pointer]
+    - generic [ref=e701]:
+      - generic [ref=e702]:
+        - generic [ref=e703]: About Abelini
+        - list [ref=e704]:
+          - listitem [ref=e705]:
+            - link "About Us" [ref=e706] [cursor=pointer]:
+              - /url: https://www.abelini.com/about-us
+          - listitem [ref=e707]:
+            - link "Customer Reviews" [ref=e708] [cursor=pointer]:
+              - /url: https://www.abelini.com/customer-reviews
+          - listitem [ref=e709]:
+            - link "Ethical Jewellery" [ref=e710] [cursor=pointer]:
+              - /url: https://www.abelini.com/ethical-jewellery
+          - listitem [ref=e711]:
+            - link "Fair Price Guarantee" [ref=e712] [cursor=pointer]:
+              - /url: https://www.abelini.com/fair-price-guarantee
+          - listitem [ref=e713]:
+            - link "Virtual Try" [ref=e714] [cursor=pointer]:
+              - /url: https://www.abelini.com/virtual-try
+          - listitem [ref=e715]:
+            - link "Terms & Conditions" [ref=e716] [cursor=pointer]:
+              - /url: https://www.abelini.com/terms-of-use
+      - generic [ref=e717]:
+        - generic [ref=e718]: Customer Care
+        - list [ref=e719]:
+          - listitem [ref=e720]:
+            - link "Free Delivery" [ref=e721] [cursor=pointer]:
+              - /url: https://www.abelini.com/free-shipping
+          - listitem [ref=e722]:
+            - link "Return & Exchange" [ref=e723] [cursor=pointer]:
+              - /url: https://www.abelini.com/return-and-exchange
+          - listitem [ref=e724]:
+            - link "Warranty & Care" [ref=e725] [cursor=pointer]:
+              - /url: https://www.abelini.com/warranty-and-care
+          - listitem [ref=e726]:
+            - link "Jewellery Insurance" [ref=e727] [cursor=pointer]:
+              - /url: https://www.abelini.com/jewellery-insurance
+          - listitem [ref=e728]:
+            - link "Bespoke" [ref=e729] [cursor=pointer]:
+              - /url: https://www.abelini.com/bespoke
+          - listitem [ref=e730]:
+            - link "Sample Services" [ref=e731] [cursor=pointer]:
+              - /url: https://www.abelini.com/home-trial
+          - listitem [ref=e732]:
+            - link "0% Interest Finance" [ref=e733] [cursor=pointer]:
+              - /url: https://www.abelini.com/finance
+          - listitem [ref=e734]:
+            - link "Free Resizing Service" [ref=e735] [cursor=pointer]:
+              - /url: https://www.abelini.com/free-resize-policy
+      - generic [ref=e736]:
+        - generic [ref=e737]: Explore
+        - list [ref=e738]:
+          - listitem [ref=e739]:
+            - link "Blog" [ref=e740] [cursor=pointer]:
+              - /url: https://www.abelini.com/blog
+          - listitem [ref=e741]:
+            - link "Customer Stories" [ref=e742] [cursor=pointer]:
+              - /url: https://www.abelini.com/customer-story
+          - listitem [ref=e743]:
+            - link "Birthstone By Month" [ref=e744] [cursor=pointer]:
+              - /url: https://www.abelini.com/birthstone-jewellery
+          - listitem [ref=e745]:
+            - link "Jewellery Gift Finder" [ref=e746] [cursor=pointer]:
+              - /url: https://www.abelini.com/jewellery-gift-finder
+          - listitem [ref=e747]:
+            - link "Hallmarking" [ref=e748] [cursor=pointer]:
+              - /url: https://www.abelini.com/hallmarking
+          - listitem [ref=e749]:
+            - link "Jewellery Care" [ref=e750] [cursor=pointer]:
+              - /url: https://www.abelini.com/jewellery-care
+          - listitem [ref=e751]:
+            - link "Ring Size Chart" [ref=e752] [cursor=pointer]:
+              - /url: https://www.abelini.com/ring-size-guide
+          - listitem [ref=e753]:
+            - link "Bracelet Size Guide" [ref=e754] [cursor=pointer]:
+              - /url: https://www.abelini.com/bracelet-size-guide
+      - generic [ref=e755]:
+        - generic [ref=e756]: Guides
+        - list [ref=e757]:
+          - listitem [ref=e758]:
+            - link "Engagement Ring Guide" [ref=e759] [cursor=pointer]:
+              - /url: https://www.abelini.com/blog/engagement-rings-buying-guide
+          - listitem [ref=e760]:
+            - link "Earrings Guide" [ref=e761] [cursor=pointer]:
+              - /url: https://www.abelini.com/blog/ultimate-guide-on-how-to-buy-diamond-earrings
+          - listitem [ref=e762]:
+            - link "Wedding Rings Guide" [ref=e763] [cursor=pointer]:
+              - /url: https://www.abelini.com/blog/ultimate-guide-on-how-to-buy-wedding-ring
+          - listitem [ref=e764]:
+            - link "Diamond Ring Guide" [ref=e765] [cursor=pointer]:
+              - /url: https://www.abelini.com/blog/diamond-ring-buying-guide
+          - listitem [ref=e766]:
+            - link "Diamond Guide" [ref=e767] [cursor=pointer]:
+              - /url: https://www.abelini.com/diamond-education
+          - listitem [ref=e768]:
+            - link "Metal Guide" [ref=e769] [cursor=pointer]:
+              - /url: https://www.abelini.com/metal-guide
+          - listitem [ref=e770]:
+            - link "Bracelet Guide" [ref=e771] [cursor=pointer]:
+              - /url: https://www.abelini.com/blog/ultimate-guide-on-how-to-buy-a-bracelet
+          - listitem [ref=e772]:
+            - link "Necklace Size Guide" [ref=e773] [cursor=pointer]:
+              - /url: https://www.abelini.com/necklace-size-guide
+      - generic [ref=e774]:
+        - generic [ref=e775]: Contact Us
+        - list [ref=e776]:
+          - listitem [ref=e777]:
+            - link "Customer Service" [ref=e778] [cursor=pointer]:
+              - /url: https://www.abelini.com/contact-us
+          - listitem [ref=e779]:
+            - link "+44 (0) 2038051270" [ref=e780] [cursor=pointer]:
+              - /url: tel:+442038051270
+          - listitem [ref=e781]:
+            - link "sales@abelini.com" [ref=e782] [cursor=pointer]:
+              - /url: mailto:sales@abelini.com
+          - listitem [ref=e783]:
+            - link "Live Chat" [ref=e784] [cursor=pointer]:
+              - /url: javascript:$zopim.livechat.window.show();
+          - listitem [ref=e785]:
+            - link "Visit Our Store" [ref=e786] [cursor=pointer]:
+              - /url: https://www.abelini.com/book-appointment
+          - listitem [ref=e787]:
+            - link "FAQ's" [ref=e788] [cursor=pointer]:
+              - /url: https://www.abelini.com/faq
+    - generic [ref=e793]:
+      - button "Store" [ref=e795] [cursor=pointer]:
+        - img [ref=e796]
+        - paragraph [ref=e800]: Store
+      - link "Live chat" [ref=e802] [cursor=pointer]:
+        - /url: javascript:$zopim.livechat.window.show();
+        - img [ref=e803]
+        - paragraph [ref=e805]: Live chat
+      - link "Call us" [ref=e807] [cursor=pointer]:
+        - /url: tel:+442038051270
+        - img [ref=e808]
+        - paragraph [ref=e810]: Call us
+      - link "Email us" [ref=e812] [cursor=pointer]:
+        - /url: mailto:sales@abelini.com
+        - img [ref=e813]
+        - paragraph [ref=e815]: Email us
+    - generic [ref=e816]:
+      - generic [ref=e818]:
+        - link "Facebook" [ref=e819] [cursor=pointer]:
+          - /url: https://www.facebook.com/abelinijewel/
+          - img [ref=e820]
+        - link "Pinterest" [ref=e822] [cursor=pointer]:
+          - /url: https://www.pinterest.co.uk/abelinijewellery/
+          - img [ref=e823]
+        - link "Instagram" [ref=e825] [cursor=pointer]:
+          - /url: https://www.instagram.com/abelinijewellery/
+          - img [ref=e826]
+        - link "Youtube" [ref=e828] [cursor=pointer]:
+          - /url: https://www.youtube.com/channel/UCdfnfdsPrWJF6wJJu7d13qA
+          - img [ref=e829]
+      - generic [ref=e832]:
+        - paragraph [ref=e834]:
+          - link "Cookie Policy" [ref=e835] [cursor=pointer]:
+            - /url: https://www.abelini.com/cookie-policy
+          - text: "|"
+          - link "Privacy Notice" [ref=e836] [cursor=pointer]:
+            - /url: https://www.abelini.com/privacy-policy
+          - text: "|"
+          - button "Company details" [ref=e837] [cursor=pointer]
+          - text: "|"
+          - link "Sitemap" [ref=e838] [cursor=pointer]:
+            - /url: https://www.abelini.com/sitemap
+        - paragraph [ref=e840]: Copyright 2026, ABELINI Ltd. All rights reserved.
+        - paragraph [ref=e842]: "Reg. office: 154 Abercorn Crescent, Harrow, HA20PU. Registered in London. Company registration no.: 10863786. VAT no: GB 285 0030 28. ABELINI is a registered trademark No. UK3310101"
+  - generic [ref=e843]: AAAAAAA
+```

@@ -1,0 +1,4 @@
+Running ENV: PROD
+BaseURL: https://www.abelini.com/
+Metal Count: 0
+⚠ Only one or no metal option available. Skipping.

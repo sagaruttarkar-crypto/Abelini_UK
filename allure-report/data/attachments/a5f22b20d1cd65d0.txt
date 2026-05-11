@@ -1,0 +1,25 @@
+Running ENV: DEV
+BaseURL: https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/
+❌ 403 - https://www.abelini.com/sale
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/return-and-exchange
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/fair-price-guarantee
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/visit-us
+❌ 406 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/account/login
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/ready-to-deliver
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/about-us
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/bespoke
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/contact-us
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/customer-reviews
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/faq
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/free-shipping
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/terms-of-use
+❌ 404 - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/all-categories
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/diamond-rings/eternity-rings
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/lab-grown-diamonds
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/book-appointment
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/#free_resizing
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/#information
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/#sixty_day_return
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/#diamond_certificate
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/#attractive_packing
+❌ Failed - https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/#life_time_warranty

@@ -1,0 +1,33 @@
+Running ENV: PROD
+BaseURL: https://www.abelini.com/
+Load More button found
+Total blogs found: 29
+Checking blog: https://www.abelini.com/blog/engagement-rings-buying-guide
+Checking blog: https://www.abelini.com/blog/engagement-ring-trends
+Checking blog: https://www.abelini.com/blog/ultimate-guide-on-how-to-buy-wedding-ring
+Checking blog: https://www.abelini.com/blog/wedding-rings-trend
+Checking blog: https://www.abelini.com/blog/diamond-ring-buying-guide
+Checking blog: https://www.abelini.com/blog/top-ten-diamond-eternity-rings-trends
+Checking blog: https://www.abelini.com/blog/ultimate-guide-on-how-to-buy-diamond-earrings
+Checking blog: https://www.abelini.com/blog/ultimate-diamond-necklace-buying-guide
+Checking blog: https://www.abelini.com/blog/diamond-necklace-and-pendant-trends
+Checking blog: https://www.abelini.com/blog/ultimate-guide-on-how-to-buy-a-bracelet
+Checking blog: https://www.abelini.com/blog/diamond-bracelet-trends
+Checking blog: https://www.abelini.com/blog/engagement-and-wedding-ring-resizing-guide
+Checking blog: https://www.abelini.com/blog/which-finger-is-the-ring-finger
+Checking blog: https://www.abelini.com/blog/ear-piercing-faqs
+Checking blog: https://www.abelini.com/blog/are-mens-earrings-still-in-style
+Checking blog: https://www.abelini.com/blog/is-gold-or-silver-in-style
+Checking blog: https://www.abelini.com/blog/jewellery-inspirations
+Checking blog: https://www.abelini.com/blog/wedding-and-proposal
+Checking blog: https://www.abelini.com/blog/jewellery-guides-advice
+Checking blog: https://www.abelini.com/blog/jewellery-trends-and-ideas
+Checking blog: https://www.abelini.com/blog/best-setting-for-an-engagement-ring
+Checking blog: https://www.abelini.com/blog/everything-you-need-to-know-about-your-birthstone
+Checking blog: https://www.abelini.com/blog/the-perfect-mothers-day-gift
+Checking blog: https://www.abelini.com/blog/valentine-day-jewellery-gift-idea-for-him-and-her
+Checking blog: https://www.abelini.com/blog/guide-to-buy-diamond-trilogy-rings
+Checking blog: https://www.abelini.com/blog/guide-to-buy-diamond-jewellery
+Checking blog: https://www.abelini.com/blog/how-to-find-great-jewelry-to-compliment-an-outfit
+Checking blog: https://www.abelini.com/blog/how-to-clean-diamond-stud-earrings-at-home
+Checking blog: https://www.abelini.com/blog/how-to-choose-diamond-stud-earrings

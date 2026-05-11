@@ -1,0 +1,33 @@
+
+===== PROD SITEMAP VALIDATION =====
+
+Base Sitemap Status: 200
+Total Main Sitemaps Found: 4
+
+Main Sitemap: https://www.abelini.com/sitemap_category.xml
+Status Code: 200
+
+Total Inner URLs: 345
+
+   ↳ https://www.abelini.com/engagement-rings  --->  200
+   ↳ https://www.abelini.com/diamond-rings  --->  200
+   ↳ https://www.abelini.com/wedding-rings  --->  200
+   ↳ https://www.abelini.com/earrings  --->  200
+   ↳ https://www.abelini.com/pendants  --->  200
+   ↳ https://www.abelini.com/bracelets  --->  200
+   ↳ https://www.abelini.com/engagement-rings/classic-solitaire/round  --->  200
+   ↳ https://www.abelini.com/engagement-rings/halo-rings  --->  200
+   ↳ https://www.abelini.com/engagement-rings/trilogy-rings  --->  200
+   ↳ https://www.abelini.com/engagement-rings/side-stone-shoulder-set-rings  --->  200
+   ↳ https://www.abelini.com/diamond-rings/half-eternity-rings  --->  200
+   ↳ https://www.abelini.com/diamond-rings/full-eternity-rings  --->  200
+   ↳ https://www.abelini.com/earrings/stud-earrings  --->  200
+   ↳ https://www.abelini.com/pendants/solitaire-pendants  --->  200
+   ↳ https://www.abelini.com/earrings/stud-earrings/round  --->  200
+   ↳ https://www.abelini.com/earrings/stud-earrings/white-gold  --->  200
+   ↳ https://www.abelini.com/earrings/stud-earrings/yellow-gold  --->  200
+   ↳ https://www.abelini.com/engagement-rings/emerald  --->  200
+   ↳ https://www.abelini.com/engagement-rings/rose-gold  --->  200
+   ↳ https://www.abelini.com/engagement-rings/asscher  --->  200
+   ↳ https://www.abelini.com/engagement-rings/oval  --->  200
+   ↳ https://www.abelini.com/engagement-rings/heart  --->  200
