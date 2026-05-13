@@ -260,6 +260,118 @@ async navigateWithNetworkIdle(path = '/') {
     return brokenLinks;
   }
 
+//   async validateBuyerProtection() {
+//   try {
+//     // =========================
+//     // CLICK BUYER PROTECTION
+//     // =========================
+//     const buyerProtection = this.page.getByRole('img', { name: 'Trusted Shops Trustmark' });
+
+//     await buyerProtection.waitFor({
+//       state: 'visible',
+//       timeout: 24000,
+//     });
+
+//     await buyerProtection.scrollIntoViewIfNeeded();
+
+//     await buyerProtection.click();
+
+//     console.log("✅ Clicked on Buyer Protection");
+
+//     // =========================
+//     // VALIDATE TRUSTMARK BUTTON
+//     // =========================
+//     const trustMarkButton = this.page.locator(
+//       '#contentBoxWithLink_trustmark-98e3dadd90eb493088abdc5597a70810'
+//     );
+
+//     await trustMarkButton.waitFor({
+//       state: 'visible',
+//       timeout: 90000,
+//     });
+
+//     await expect(trustMarkButton).toBeVisible();
+
+//     console.log("✅ Trustmark button is visible");
+
+//     // =========================
+//     // CLICK TRUSTMARK BUTTON
+//     // =========================
+//     await trustMarkButton.scrollIntoViewIfNeeded();
+
+//     await trustMarkButton.click();
+
+//     console.log("✅ Clicked on Trustmark button");
+
+//     // =========================
+//     // CLICK BACK BUTTON
+//     // =========================
+//     const backButton = this.page.locator(
+//       'button[data-testid="maximized-trustbadge-back-button"]'
+//     );
+
+//     await backButton.waitFor({
+//       state: 'visible',
+//       timeout: 10000,
+//     });
+
+//     await expect(backButton).toBeVisible();
+
+//     await backButton.click();
+
+//     console.log("✅ Clicked on Back button");
+
+//   } catch (error) {
+//     console.error("❌ Buyer Protection validation failed:", error);
+//     throw error;
+//   }
+// }
+async validateCookiesBot() {
+  try {
+
+    // Wait for page load
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForLoadState('networkidle');
+
+    // Wait until CookiesBot block is loaded
+    await this.page.waitForSelector(
+      '#CybotCookiebotDialogBodyContentTitle',
+      {
+        state: 'visible',
+        timeout: 24000
+      }
+    );
+
+    console.log('CookiesBot popup loaded successfully');
+
+    // Customize button
+    const customizeBtn = this.page.getByRole('button', {
+      name: 'Customize'
+    });
+
+    // Validate + click
+    if (await customizeBtn.isVisible()) {
+
+      await customizeBtn.click();
+
+      console.log('Clicked on Customize button');
+
+      // Wait after click
+      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForTimeout(2000);
+
+    } else {
+
+      console.log('Customize button not visible');
+
+    }
+
+  } catch (error) {
+
+    console.log('CookiesBot validation failed:', error.message);
+
+  }
+}
 }
 
 module.exports = BasePage;

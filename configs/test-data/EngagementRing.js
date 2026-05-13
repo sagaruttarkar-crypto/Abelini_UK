@@ -1,63 +1,59 @@
 // productUrls.js
+  module.exports = [
+  '/product/prong-setting-round-trilogy-diamond-engagement-ring-platinum-rint145-lbg#metal=GL_9K_Y',
 
-module.exports = [
-  '/product/solitaire-engagement-rings-platinum-rose-white-gold-brilliant-cut-diamond-rine3170-lbg',
+  '/product/round-trilogy-diamond-rings-4-prong-setting-yellow-white-gold-rint03380-n-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-classic-oval-shape-hidden-halo-diamond-engagement-ring-rinw8477-lbg#metal=GL_9K_W',
+  '/product/prong-setting-round-trilogy-diamond-engagement-ring-white-gold-rint2032-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-emerald-shape-halo-diamond-engagement-rings-rine4957-lbg#metal=GL_9K_W&shape=EMR',
+  '/product/split-shoulder-emerald-diamond-trilogy-engagement-rings-rine6774-lbg#metal=GL_9K_W&shape=EMR',
 
-  '/product/prong-setting-emerald-side-stone-diamond-engagement-ring-rin02254?metal=GL_9K_W&shape=EMR&stone_type=LBG',
+  '/product/4-prong-setting-round-shape-a-breathaking-diamond-three-stone-ring-with-shoulder-stone-rinw8521-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-set-round-diamond-halo-engagement-ring-with-side-stones-rinh2021-lbg#metal=GL_9K_W',
+  '/product/4-prong-setting-oval-and-pear-shape-trilogy-ring-rinw9033#&metal=GL_9K_W',
 
-  '/product/4-prong-setting-oval-shape-hidden-halo-side-stone-engagement-rings-rinw9435-lbg#metal=GL_9K_W',
+  '/product/cross-over-setting-round-trilogy-diamond-ring-in-gold-and-platinum-rine3112-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-pear-shape-halo-diamond-engagement-rings-rine5110-lbg#metal=GL_9K_W&shape=PER',
+  '/product/prong-setting-round-trilogy-diamond-engagement-ring-rose-white-gold-rint2036-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-round-diamond-side-stone-halo-hidden-engagement-rings-rinw9441-lbg#metal=GL_9K_W',
+  '/product/round-trilogy-diamond-rings-6-prong-setting-yellow-gold-rint03257-n-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-oval-shape-plain-band-hidden-halo-side-stone-engagement-rings-rinw9436-lbg#metal=GL_9K_W',
+  '/product/round-diamond-trilogy-engagement-rings-with-diamonds-on-shoulder-rine3381-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-round-shape-delicate-halo-diamond-engagement-rings-rine5154-lbg#metal=GL_9K_W',
+  '/product/emerald-shape-diamond-trilogy-engagement-rings-in-gold-and-platinum-rine4180-lbg#metal=GL_9K_W&shape=EMR',
 
-  '/product/4-prong-setting-radiant-shape-hidden-halo-engagement-rings-rinw9437-lbg#metal=GL_9K_W',
+  '/product/emeral-and-round-diamond-trilogy-engagement-rings-for-women-rine4178-lbg#metal=GL_9K_W&shape=EMRRND',
 
-  '/product/emerald-diamond-halo-engagement-ring-4-prong-set-with-side-stones-rinh2018b-lbg#metal=GL_9K_W&shape=EMR',
+  '/product/4-Prong-setting-round-shape-diamond-trilogy-ring-rinw9038-lbg#metal=GL_9K_W',
 
-  '/product/prong-setting-side-stone-princess-diamond-halo-engagement-ring-rinh2022-lbg#metal=GL_9K_W&shape=PRN',
+  '/product/4-prong-princess-cut-diamond-three-stone-engagement-rings-rine4149-lbg#metal=GL_9K_W&shape=PRN',
 
-  '/product/prong-setting-oval-diamond-halo-engagement-ring-rinh2017b-lbg#metal=GL_9K_W&shape=OVL',
+  '/product/cross-over-claws-three-equal-diamonds-trilogy-engagement-rings-rine4043-lbg#metal=GL_9K_W',
 
-  '/product/prong-setting-princess-shape-gorgeous-halo-diamond-engagement-rings-rine5820-lbg#metal=GL_9K_W&shape=PRN',
+  '/product/emerald-trilogy-diamond-rings-4-prong-setting-platinum-rint03353-n-lbg#metal=GL_9K_W&shape=EMR',
 
-  '/product/prong-setting-round-diamond-halo-engagement-ring-rinh2015-lbg#metal=GL_9K_W',
+  '/product/round-trilogy-diamond-rings-full-bezel-setting-white-gold-platinum-rint03262-n-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-radiant-shape-hidden-halo-side-stone-engagement-rings-rinw9434-lbg#metal=GL_9K_W',
+  '/product/graduating-round-diamond-trilogy-engagement-rings-in-uk-rine4902-lbg#metal=GL_9K_W',
 
-  '/product/prong-setting-pear-shape-plain-shoulder-halo-diamond-engagement-rings-rine5890-lbg#metal=GL_9K_W&shape=PER',
+  '/product/high-setting-diamond-trilogy-engagement-rings-with-diamonds-on-shoulder-rine3965-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-marquise-shape-twist-crossing-shoulder-halo-diamond-engagement-rings-rine5393-lbg#metal=GL_9K_W&shape=MQS',
+  '/product/4-prong-set-round-trilogy-diamond-ring-white-gold-platinum-rint03234-n-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-emerald-shape-unique-halo-diamond-engagement-rings-rine4717-lbg#metal=GL_9K_W&shape=EMR',
+  '/product/prong-setting-round-pear-trilogy-diamond-engagement-ring-platinum-rint1016-lbg#metal=GL_9K_W&shape=RNDPER',
 
-  '/product/4-prong-setting-oval-shape-2-raw-pave-set-shoulder-halo-diamond-engagement-rings-rine6918-lbg#metal=GL_9K_W&shape=OVL',
+  '/product/prong-setting-round-and-side-diamond-ring-rinw5159-lbg#metal=GL_9K_W',
 
-  '/product/pear-engagement-halo-diamond-engagement-ring-white-rose-gold-rings-uk-rinh2020-lbg#metal=GL_9K_W&shape=PER',
+  '/product/4-prong-setting-round-trilogy-diamond-rings-yellow-gold-rint03348-n-lbg#metal=GL_9K_W',
 
-  '/product/petite-twisted-halo-diamond-engagement-ring-rinw8690-lbg#metal=GL_9K_W',
+  '/product/round-4-prong-minimalist-trilogy-diamond-engagement-ring-rinw5149-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-heart-shape-intervene-shoulder-halo-diamond-engagement-rings-rine7129-lbg#metal=GL_9K_W&shape=HRT',
+  '/product/pear-shape-diamond-three-stone-engagement-rings-in-uk-rine4912-lbg#metal=GL_9K_W&shape=PER',
 
-  '/product/4-prong-setting-round-shape-u-prong-set-halo-diamond-engagement-rings-rine6729-lbg#metal=GL_9K_W',
+  '/product/prong-setting-round-trilogy-diamond-engagement-ring-white-gold-rint2024-lbg#metal=GL_9K_W',
 
-  '/product/4-prong-setting-oval-shape-flower-halo-diamond-engagement-rings-rine5333-lbg#metal=GL_9K_W&shape=OVL',
+  '/product/prong-setting-round-pear-trilogy-diamond-engagement-ring-rint2033-lbg#metal=GL_9K_W&shape=RNDPER',
 
-  '/product/4-prong-setting-oval-shape-tapering-shoulder-halo-diamond-engagement-rings-rine4550-lbg#metal=GL_9K_W&shape=OVL',
+  '/product/popular-style-round-and-pear-shape-trilogy-diamond-engagement-rings-rine4831-lbg#metal=GL_9K_W&shape=RNDPER',
 
-  '/product/prong-setting-diamond-halo-engagement-ring-rinh2015b-lbg#metal=GL_9K_W',
-
-  '/product/4-prong-setting-cushion-shape-delicate-seller-halo-diamond-engagement-rings-rine4333-lbg#metal=GL_9K_W&shape=CUS',
-
-  '/product/prong-setting-pear-shape-2-raw-shoulder-halo-diamond-engagement-rings-rine5832-lbg#metal=GL_9K_W&shape=PER'
 ];

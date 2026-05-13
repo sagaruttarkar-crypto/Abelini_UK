@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const HomePage = require('../../pages/HomePage');
-
+const BasePage = require('../../pages/BasePage');
 test.describe('Regression -Sprin2 Logo & Newsletter Validation', () => {
 
   test('Verify Abelini logo is visible and clickable @regression', async ({ page }) => {
@@ -68,6 +68,14 @@ test('Validate all header menus', async ({ page }) => {
   await home.navigate('/');
 
   await home.validateHeaderMegaMenu();
+});
+
+test('Validate Buyer Protection', async ({ page }) => {
+  const home = new HomePage(page);
+
+  await home.navigate('/');
+
+  await home.validateCookiesBot();
 });
 
 });

@@ -1,4 +1,4 @@
 module.exports = {
-  baseURL: 'https://stage.abelini.com/',
+  baseURL: 'https://stage.abelini.com',
   envName: 'STAGING'
 };

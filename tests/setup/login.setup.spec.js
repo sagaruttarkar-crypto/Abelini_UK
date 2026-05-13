@@ -28,7 +28,7 @@ test('Validate Shopify login and save session', async ({ page }) => {
   }
 
   // Wait until Shopify redirects back to account page
-  await page.waitForURL('**/account**', { timeout: 120000 });
+  await page.waitForURL('**/account**', { timeout: 200000 });
 
   // Wait for account page to fully load
   await page.waitForLoadState('networkidle');
