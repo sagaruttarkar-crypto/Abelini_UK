@@ -1,5 +1,6 @@
 const { test } = require('@playwright/test');
 const ProductPage = require('../../pages/ProductPage');
+const HomePage = require('../../pages/HomePage');
 
 const Braclates = require('../../configs/test-data/Braclates');
 const DiamondRings = require('../../configs/test-data/DiamondRings');

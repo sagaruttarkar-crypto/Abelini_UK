@@ -1,7 +1,10 @@
 const { expect } = require('@playwright/test');
+const BasePage = require('./BasePage');
+const HomePage = require('./HomePage');
 
-class ProductPage {
+class ProductPage extends BasePage {
   constructor(page) {
+    super(page);
     this.page = page;
 
     this.productTitle = page.getByRole('heading', { level: 1 });
@@ -508,12 +511,46 @@ async validatevirtualTryOn() {
 async validatePriceFilters_EngagementRings() {
 
   // =========================
+  // AUTO HANDLE COOKIES
+  // =========================
+
+  const handleAllowAllCookies = async () => {
+
+    try {
+
+      const allowBtn = this.page.locator(
+        '#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll'
+      );
+
+      if (await allowBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+
+        await allowBtn.scrollIntoViewIfNeeded();
+
+        await allowBtn.click();
+
+        console.log('✅ Allow All Cookies Accepted');
+
+        await this.page.waitForTimeout(8000);
+
+      }
+
+    } catch (error) {
+
+      console.log('⚠️ Allow All button not visible');
+
+    }
+  };
+
+  // =========================
   // SAFE CLICK FUNCTION
   // =========================
 
   const safeClick = async (locator, name) => {
 
     try {
+
+      // check cookies popup before every action
+      await handleAllowAllCookies();
 
       if (await locator.count() > 0) {
 
@@ -526,6 +563,9 @@ async validatePriceFilters_EngagementRings() {
         console.log(`✅ Clicked: ${name}`);
 
         await this.page.waitForTimeout(2000);
+
+        // check again after click
+        await handleAllowAllCookies();
 
       } else {
 
@@ -548,7 +588,11 @@ async validatePriceFilters_EngagementRings() {
 
     try {
 
+      // handle popup before getting price
+      await handleAllowAllCookies();
+
       await this.page.waitForLoadState('domcontentloaded');
+
       await this.page.waitForTimeout(3000);
 
       const priceText = await this.page
@@ -569,20 +613,30 @@ async validatePriceFilters_EngagementRings() {
   };
 
   // =========================
+  // START EXECUTION
+  // =========================
+
+  await handleAllowAllCookies();
+
+  // =========================
   // DEFAULT PRICE
   // =========================
 
   const defaultPrice = await getPrice();
 
   // =========================
-  // APPLY Min Filter 
+  // APPLY MIN FILTER
   // =========================
 
   try {
 
+    await handleAllowAllCookies();
+
     await this.page.locator('#ring_size').selectOption({
       label: 'H'
     });
+
+    console.log('✅ Ring size H selected');
 
     await this.page.waitForTimeout(3000);
 
@@ -592,11 +646,14 @@ async validatePriceFilters_EngagementRings() {
 
   }
 
+  // =========================
   // GET MIN PRICE
+  // =========================
+
   const minPrice = await getPrice();
 
   // =========================
-  // APPLY Max Filter 
+  // APPLY FILTERS
   // =========================
 
   await safeClick(
@@ -608,11 +665,15 @@ async validatePriceFilters_EngagementRings() {
 
   try {
 
+    await handleAllowAllCookies();
+
     await this.page.locator('#ring_size').selectOption({
       label: 'I dont know'
     });
 
-    await this.page.waitForTimeout(2000);
+    console.log('✅ Ring size changed');
+
+    await this.page.waitForTimeout(8000);
 
   } catch (error) {
 
@@ -641,6 +702,8 @@ async validatePriceFilters_EngagementRings() {
   // =========================
 
   try {
+
+    await handleAllowAllCookies();
 
     const priceSlider = this.page.locator(
       'input[type="range"][aria-label="Price Range"]'
@@ -685,7 +748,7 @@ async validatePriceFilters_EngagementRings() {
 
   }
 
-  await this.page.waitForTimeout(3000);
+  await this.page.waitForTimeout(8000);
 
   // =========================
   // IF BUTTON
@@ -697,7 +760,7 @@ async validatePriceFilters_EngagementRings() {
     ),
     'IF Button'
   );
-
+await this.page.waitForTimeout(8000);
   // =========================
   // D BUTTON
   // =========================
@@ -708,7 +771,7 @@ async validatePriceFilters_EngagementRings() {
     ),
     'D Button'
   );
-
+await this.page.waitForTimeout(8000);
   // =========================
   // EXCELLENT BUTTON
   // =========================
@@ -720,7 +783,12 @@ async validatePriceFilters_EngagementRings() {
     'Excellent Button'
   );
 
-  await this.page.waitForTimeout(4000);
+  await this.page.waitForTimeout(8000);
+
+  await safeClick(
+  this.page.getByText('GIA', { exact: true }),
+  'GIA Button'
+);
 
   // =========================
   // MAX PRICE

@@ -372,6 +372,39 @@ async validateCookiesBot() {
 
   }
 }
+
+async validateAllowAllCookies() {
+  try {  
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForLoadState('networkidle');
+
+    // Wait until CookiesBot block is loaded
+    await this.page.waitForSelector(
+      '#CybotCookiebotDialogBodyContentTitle',
+      {
+        state: 'visible',
+        timeout: 24000
+      }
+    );
+
+    console.log('CookiesBot popup loaded successfully');
+    // Allow All button
+    const allowAllBtn = this.page.getByRole('button', {
+      name: 'Allow All'       
+    });
+    // Validate + click
+    if (await allowAllBtn.isVisible()) { 
+      await allowAllBtn.click();
+      console.log('Clicked on Allow All button');             
+}
+  else {    
+    console.log('Allow All button not visible');
+  }
+  } catch (error) {
+    console.log('Allow All Cookies validation failed:', error.message);
+  }
+}
+
 }
 
 module.exports = BasePage;
