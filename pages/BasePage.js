@@ -359,97 +359,143 @@ async navigateWithNetworkIdle(path = '/') {
 //   return brokenLinks;
 // }
 async validateAllBlogsLinks() {
+
   const brokenLinks = [];
   const allBlogLinks = new Set();
+  const checkedLinks = new Map();
 
   // ==========================================
-  // Collect all blog URLs from pagination
+  // STEP 1 - Load all blogs
   // ==========================================
+
   while (true) {
 
-    const blogLinks = await this.page.$$eval('a[href*="/blog/"]', links =>
-      [...new Set(
-        links
-          .map(link => link.getAttribute('href'))
-          .filter(href =>
-            href &&
-            !href.includes('/blog?page=') &&
-            !href.endsWith('/blog') &&
-            !href.endsWith('/blog/')
-          )
-      )]
+    // Collect currently visible blogs
+    const blogLinks = await this.page.$$eval(
+      'a[href*="/blog/"]',
+      links =>
+        [...new Set(
+          links
+            .map(link => link.href)
+            .filter(href =>
+              href &&
+              !href.includes('/blog?page=') &&
+              !href.endsWith('/blog') &&
+              !href.endsWith('/blog/')
+            )
+        )]
     );
 
-    blogLinks.forEach(link =>
-      allBlogLinks.add(new URL(link, this.page.url()).href)
-    );
+    blogLinks.forEach(link => allBlogLinks.add(link));
 
-    const nextBtn = this.page.locator('.pagination a').filter({
-      hasText: '>'
-    }).first();
+    console.log(`Collected Blogs : ${allBlogLinks.size}`);
 
-    if (!(await nextBtn.count()) || !(await nextBtn.isVisible().catch(() => false))) {
+    const loadMore = this.page.getByRole('button', {
+      name: /load more/i
+    });
+
+    if (!(await loadMore.isVisible().catch(() => false))) {
+      console.log("All blogs loaded.");
       break;
     }
 
-    console.log(`Collected ${allBlogLinks.size} blog URLs`);
+    const previousCount = allBlogLinks.size;
 
-    await Promise.all([
-      this.page.waitForLoadState('domcontentloaded'),
-      nextBtn.click()
-    ]);
+    await loadMore.scrollIntoViewIfNeeded();
+
+    await loadMore.click();
+
+    await this.page.waitForFunction(
+      previous => {
+        const blogs = new Set(
+          [...document.querySelectorAll('a[href*="/blog/"]')]
+            .map(a => a.href)
+            .filter(href =>
+              href &&
+              !href.includes('/blog?page=') &&
+              !href.endsWith('/blog') &&
+              !href.endsWith('/blog/')
+            )
+        );
+
+        return blogs.size > previous;
+      },
+      previousCount,
+      { timeout: 30000 }
+    );
   }
 
-  console.log(`Total Blogs Found: ${allBlogLinks.size}`);
+  console.log(`\nTotal Blogs Found : ${allBlogLinks.size}`);
 
   // ==========================================
-  // Open each blog and validate only blog links
+  // STEP 2 - Validate blog links
   // ==========================================
+
   for (const blogUrl of allBlogLinks) {
 
-    console.log(`\nChecking Blog: ${blogUrl}`);
+    console.log(`\nChecking Blog : ${blogUrl}`);
 
     await this.page.goto(blogUrl, {
-      waitUntil: 'domcontentloaded',
+      waitUntil: "domcontentloaded",
       timeout: 60000
     });
 
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState("networkidle");
 
-    // Blog content only (ignores header, footer, related blogs, social links)
+    // Only links inside blog article
     const links = await this.page
-      .locator('.max-w-6xl.mx-auto.lg\\:px-5 a[href]')
+      .locator(".max-w-6xl.mx-auto.lg\\:px-5 a[href]")
       .evaluateAll(elements =>
         [...new Set(elements.map(el => el.href))]
       );
 
-    console.log(`Found ${links.length} content links`);
+    console.log(`Found ${links.length} article links`);
 
     for (const url of links) {
 
       if (
         !url ||
-        url.startsWith('mailto:') ||
-        url.startsWith('tel:') ||
-        url.startsWith('javascript:') ||
-        url.includes('#')
+        url.startsWith("mailto:") ||
+        url.startsWith("tel:") ||
+        url.startsWith("javascript:") ||
+        url.includes("#")
       ) {
         continue;
       }
 
-      // Validate only internal website links
+      // Only internal links
       if (!url.startsWith(new URL(blogUrl).origin)) {
+        continue;
+      }
+
+      // Skip already checked links
+      if (checkedLinks.has(url)) {
+
+        if (checkedLinks.get(url) >= 400) {
+          brokenLinks.push({
+            Blog: blogUrl,
+            Link: url,
+            Status: checkedLinks.get(url)
+          });
+        }
+
         continue;
       }
 
       try {
 
-        const response = await this.request.get(url, {
-          failOnStatusCode: false,
-          headers: {
-            'User-Agent': 'Mozilla/5.0'
-          }
+        let response = await this.request.head(url, {
+          failOnStatusCode: false
         });
+
+        // Some servers don't support HEAD
+        if (response.status() === 405 || response.status() === 501) {
+          response = await this.request.get(url, {
+            failOnStatusCode: false
+          });
+        }
+
+        checkedLinks.set(url, response.status());
 
         if (response.status() >= 400) {
 
@@ -467,12 +513,14 @@ async validateAllBlogsLinks() {
 
         }
 
-      } catch (error) {
+      } catch {
+
+        checkedLinks.set(url, "FAILED");
 
         brokenLinks.push({
           Blog: blogUrl,
           Link: url,
-          Status: 'FAILED'
+          Status: "FAILED"
         });
 
         console.log(`❌ FAILED : ${url}`);
@@ -480,15 +528,14 @@ async validateAllBlogsLinks() {
     }
   }
 
-  console.log('\n========================================');
-  console.log(`Total Blogs Checked : ${allBlogLinks.size}`);
-  console.log(`Broken Links Found  : ${brokenLinks.length}`);
-  console.log('========================================');
+  console.log("\n=================================");
+  console.log(`Total Blogs Loaded : ${allBlogLinks.size}`);
+  console.log(`Unique Links Checked : ${checkedLinks.size}`);
+  console.log(`Broken Links : ${brokenLinks.length}`);
+  console.log("=================================");
 
   if (brokenLinks.length) {
     console.table(brokenLinks);
-  } else {
-    console.log('🎉 No broken links found.');
   }
 
   return brokenLinks;
