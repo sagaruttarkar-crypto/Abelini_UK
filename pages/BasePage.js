@@ -166,36 +166,206 @@ async navigateWithNetworkIdle(path = '/') {
   // EXISTING BLOG VALIDATION
   // ===============================
 
-  async validateAllBlogsLinks() {
+  // async validateAllBlogsLinks() {
 
-    const brokenLinks = [];
-    const loadMoreBtn = this.page.getByText('>|', { exact: true });
+  //   const brokenLinks = [];
+  //   const loadMoreBtn = this.page.getByText('>|', { exact: true });
 
-    if (await loadMoreBtn.count() > 0) {
+  //   if (await loadMoreBtn.count() > 0) {
 
-      console.log('Load More button found');
+  //     console.log('Load More button found');
 
-      while (await loadMoreBtn.first().isVisible().catch(() => false)) {
-        await loadMoreBtn.first().scrollIntoViewIfNeeded();
-        await loadMoreBtn.first().click();
-        await this.page.waitForLoadState('networkidle');
+  //     while (await loadMoreBtn.first().isVisible().catch(() => false)) {
+  //       await loadMoreBtn.first().scrollIntoViewIfNeeded();
+  //       await loadMoreBtn.first().click();
+  //       await this.page.waitForLoadState('networkidle');
 
-        await this.page.evaluate(() => {
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-      }
+  //       await this.page.evaluate(() => {
+  //         window.scrollTo(0, document.body.scrollHeight);
+  //       });
+  //     }
 
-    } else {
+  //   } else {
 
-      console.log('Load More not found → Switching category');
+  //     console.log('Load More not found → Switching category');
 
-      const categories = this.page.locator('.blog-category a');
+  //     const categories = this.page.locator('.blog-category a');
 
-      if (await categories.count() > 1) {
-        await categories.nth(1).click();
-        await this.page.waitForLoadState('domcontentloaded');
-      }
-    }
+  //     if (await categories.count() > 1) {
+  //       await categories.nth(1).click();
+  //       await this.page.waitForLoadState('domcontentloaded');
+  //     }
+  //   }
+
+  //   const blogLinks = await this.page.$$eval('a[href*="/blog/"]', links =>
+  //     [...new Set(
+  //       links
+  //         .map(link => link.getAttribute('href'))
+  //         .filter(href =>
+  //           href &&
+  //           !href.includes('/blog?page=') &&
+  //           !href.endsWith('/blog') &&
+  //           !href.endsWith('/blog/')
+  //         )
+  //     )]
+  //   );
+
+  //   console.log(`Total blogs found: ${blogLinks.length}`);
+
+  //   for (const blog of blogLinks) {
+
+  //     const blogUrl = new URL(blog, this.page.url()).href;
+
+  //     await this.page.goto(blogUrl, {
+  //       waitUntil: 'domcontentloaded',
+  //       timeout: 60000
+  //     });
+
+  //     const links = await this.page.$$eval('a[href]', elements =>
+  //       [...new Set(elements.map(el => el.getAttribute('href')))]
+  //     );
+
+  //     for (const link of links) {
+
+  //       if (!link ||
+  //           link.startsWith('#') ||
+  //           link.startsWith('mailto:') ||
+  //           link.startsWith('tel:') ||
+  //           link.startsWith('javascript:')
+  //       ) continue;
+
+  //       const url = new URL(link, this.page.url()).href;
+
+  //       if (!url.includes('myshopify.dev')) continue;
+
+  //       try {
+  //         const response = await this.request.get(url, {
+  //           headers: { 'User-Agent': 'Mozilla/5.0' }
+  //         });
+
+  //         if (response.status() >= 400) {
+  //           brokenLinks.push(`${response.status()} - ${url}`);
+  //         }
+
+  //       } catch {
+  //         brokenLinks.push(`Failed - ${url}`);
+  //       }
+  //     }
+  //   }
+
+  //   console.log('-----------------------------------');
+  //   console.log(`Total Broken Blog Links: ${brokenLinks.length}`);
+  //   console.log('-----------------------------------');
+
+  //   return brokenLinks;
+  // }
+//   async validateAllBlogsLinks() {
+//   const brokenLinks = [];
+//   const allBlogLinks = new Set();
+
+//   // Loop through all pagination pages
+//   while (true) {
+
+//     // Collect blog links from current page
+//     const blogLinks = await this.page.$$eval('a[href*="/blog/"]', links =>
+//       [...new Set(
+//         links
+//           .map(link => link.getAttribute('href'))
+//           .filter(href =>
+//             href &&
+//             !href.includes('/blog?page=') &&
+//             !href.endsWith('/blog') &&
+//             !href.endsWith('/blog/')
+//           )
+//       )]
+//     );
+
+//     blogLinks.forEach(link =>
+//       allBlogLinks.add(new URL(link, this.page.url()).href)
+//     );
+
+//     // Find the Next (>) button
+//     const nextBtn = this.page.locator('.pagination a').filter({
+//       hasText: '>'
+//     }).first();
+
+//     // Stop if no next page
+//     if (!(await nextBtn.count()) || !(await nextBtn.isVisible().catch(() => false))) {
+//       break;
+//     }
+
+//     console.log(`Collected ${allBlogLinks.size} blogs. Moving to next page...`);
+
+//     await Promise.all([
+//       this.page.waitForLoadState('domcontentloaded'),
+//       nextBtn.click()
+//     ]);
+//   }
+
+//   console.log(`Total blogs found: ${allBlogLinks.size}`);
+
+//   // Validate every blog page
+//   for (const blogUrl of allBlogLinks) {
+
+//     console.log(`Checking ${blogUrl}`);
+
+//     await this.page.goto(blogUrl, {
+//       waitUntil: 'domcontentloaded',
+//       timeout: 60000
+//     });
+
+//     const links = await this.page.$$eval('a[href]', elements =>
+//       [...new Set(elements.map(el => el.getAttribute('href')))]
+//     );
+
+//     for (const link of links) {
+
+//       if (
+//         !link ||
+//         link.startsWith('#') ||
+//         link.startsWith('mailto:') ||
+//         link.startsWith('tel:') ||
+//         link.startsWith('javascript:')
+//       ) {
+//         continue;
+//       }
+
+//       const url = new URL(link, this.page.url()).href;
+
+//       // Validate only dev links
+//       if (!url.includes('myshopify.dev')) continue;
+
+//       try {
+//         const response = await this.request.get(url, {
+//           headers: {
+//             'User-Agent': 'Mozilla/5.0'
+//           }
+//         });
+
+//         if (response.status() >= 400) {
+//           brokenLinks.push(`${response.status()} - ${url}`);
+//         }
+//       } catch {
+//         brokenLinks.push(`Failed - ${url}`);
+//       }
+//     }
+//   }
+
+//   console.log('-----------------------------------');
+//   console.log(`Total Blogs: ${allBlogLinks.size}`);
+//   console.log(`Total Broken Links: ${brokenLinks.length}`);
+//   console.log('-----------------------------------');
+
+//   return brokenLinks;
+// }
+async validateAllBlogsLinks() {
+  const brokenLinks = [];
+  const allBlogLinks = new Set();
+
+  // ==========================================
+  // Collect all blog URLs from pagination
+  // ==========================================
+  while (true) {
 
     const blogLinks = await this.page.$$eval('a[href*="/blog/"]', links =>
       [...new Set(
@@ -210,55 +380,120 @@ async navigateWithNetworkIdle(path = '/') {
       )]
     );
 
-    console.log(`Total blogs found: ${blogLinks.length}`);
+    blogLinks.forEach(link =>
+      allBlogLinks.add(new URL(link, this.page.url()).href)
+    );
 
-    for (const blog of blogLinks) {
+    const nextBtn = this.page.locator('.pagination a').filter({
+      hasText: '>'
+    }).first();
 
-      const blogUrl = new URL(blog, this.page.url()).href;
-
-      await this.page.goto(blogUrl, {
-        waitUntil: 'domcontentloaded',
-        timeout: 60000
-      });
-
-      const links = await this.page.$$eval('a[href]', elements =>
-        [...new Set(elements.map(el => el.getAttribute('href')))]
-      );
-
-      for (const link of links) {
-
-        if (!link ||
-            link.startsWith('#') ||
-            link.startsWith('mailto:') ||
-            link.startsWith('tel:') ||
-            link.startsWith('javascript:')
-        ) continue;
-
-        const url = new URL(link, this.page.url()).href;
-
-        if (!url.includes('myshopify.dev')) continue;
-
-        try {
-          const response = await this.request.get(url, {
-            headers: { 'User-Agent': 'Mozilla/5.0' }
-          });
-
-          if (response.status() >= 400) {
-            brokenLinks.push(`${response.status()} - ${url}`);
-          }
-
-        } catch {
-          brokenLinks.push(`Failed - ${url}`);
-        }
-      }
+    if (!(await nextBtn.count()) || !(await nextBtn.isVisible().catch(() => false))) {
+      break;
     }
 
-    console.log('-----------------------------------');
-    console.log(`Total Broken Blog Links: ${brokenLinks.length}`);
-    console.log('-----------------------------------');
+    console.log(`Collected ${allBlogLinks.size} blog URLs`);
 
-    return brokenLinks;
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      nextBtn.click()
+    ]);
   }
+
+  console.log(`Total Blogs Found: ${allBlogLinks.size}`);
+
+  // ==========================================
+  // Open each blog and validate only blog links
+  // ==========================================
+  for (const blogUrl of allBlogLinks) {
+
+    console.log(`\nChecking Blog: ${blogUrl}`);
+
+    await this.page.goto(blogUrl, {
+      waitUntil: 'domcontentloaded',
+      timeout: 60000
+    });
+
+    await this.page.waitForLoadState('networkidle');
+
+    // Blog content only (ignores header, footer, related blogs, social links)
+    const links = await this.page
+      .locator('.max-w-6xl.mx-auto.lg\\:px-5 a[href]')
+      .evaluateAll(elements =>
+        [...new Set(elements.map(el => el.href))]
+      );
+
+    console.log(`Found ${links.length} content links`);
+
+    for (const url of links) {
+
+      if (
+        !url ||
+        url.startsWith('mailto:') ||
+        url.startsWith('tel:') ||
+        url.startsWith('javascript:') ||
+        url.includes('#')
+      ) {
+        continue;
+      }
+
+      // Validate only internal website links
+      if (!url.startsWith(new URL(blogUrl).origin)) {
+        continue;
+      }
+
+      try {
+
+        const response = await this.request.get(url, {
+          failOnStatusCode: false,
+          headers: {
+            'User-Agent': 'Mozilla/5.0'
+          }
+        });
+
+        if (response.status() >= 400) {
+
+          brokenLinks.push({
+            Blog: blogUrl,
+            Link: url,
+            Status: response.status()
+          });
+
+          console.log(`❌ ${response.status()} : ${url}`);
+
+        } else {
+
+          console.log(`✅ ${response.status()} : ${url}`);
+
+        }
+
+      } catch (error) {
+
+        brokenLinks.push({
+          Blog: blogUrl,
+          Link: url,
+          Status: 'FAILED'
+        });
+
+        console.log(`❌ FAILED : ${url}`);
+      }
+    }
+  }
+
+  console.log('\n========================================');
+  console.log(`Total Blogs Checked : ${allBlogLinks.size}`);
+  console.log(`Broken Links Found  : ${brokenLinks.length}`);
+  console.log('========================================');
+
+  if (brokenLinks.length) {
+    console.table(brokenLinks);
+  } else {
+    console.log('🎉 No broken links found.');
+  }
+
+  return brokenLinks;
+}
+
 
 //   async validateBuyerProtection() {
 //   try {

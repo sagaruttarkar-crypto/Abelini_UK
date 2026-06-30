@@ -15,7 +15,7 @@ test.describe('Regression - Sprint 2 - Blog Page', () => {
 
   test('Validate all blog links @regression', async ({ page, request }) => {
 
-    test.setTimeout(180000);
+    test.setTimeout(15 * 60 * 1000); 
 
     const basePage = new BasePage(page, request);
     await basePage.navigate('/blog');
