@@ -1,136 +1,190 @@
 import { test } from '@playwright/test';
 import fs from 'fs';
 
-test('Shopify - Broken Links + Images (Advanced Fast Version)', async ({ page, request }) => {
+test.describe('Shopify Broken Links + Images Crawler', () => {
 
-  const baseURL = 'https://www.abelini.com.au/';
+  test('BrokenLinks - Ultra Fast Version', async ({ page, request }) => {
 
-  const visited = new Set();
-  const toVisit = [baseURL];
+    console.log('✅ TEST STARTED - CRAWLER RUNNING');
 
-  const brokenLinks = new Set();
-  const validLinks = new Set();
+    const baseURL = 'https://live.abelini.com/';
 
-  const brokenImages = new Set();
-  const validImages = new Set();
+    const visited = new Set();
+    const queue = [baseURL];
+    let index = 0;
 
-  test.setTimeout(600000);
+    const brokenLinks = new Set();
+    const validLinks = new Set();
 
-  // =========================
-  // 🔁 PARALLEL FETCH FUNCTION
-  // =========================
-  const checkUrlsInParallel = async (urls, type) => {
-    await Promise.all(urls.map(async (url) => {
-      try {
-        const res = await request.get(url, { timeout: 10000 });
+    const brokenImages = new Set();
+    const validImages = new Set();
 
-        if (res.status() >= 400) {
-          type === 'link' ? brokenLinks.add(url) : brokenImages.add(url);
-        } else {
-          type === 'link' ? validLinks.add(url) : validImages.add(url);
-        }
-      } catch {
-        type === 'link' ? brokenLinks.add(url) : brokenImages.add(url);
+    const checkedLinks = new Set();
+    const checkedImages = new Set();
+
+    test.setTimeout(0);
+
+    // =========================
+    // ⚡ BATCH VALIDATOR
+    // =========================
+    const validateBatch = async (urls, type) => {
+
+      if (!urls.length) return;
+
+      const batchSize = 30;
+
+      for (let i = 0; i < urls.length; i += batchSize) {
+
+        const chunk = urls.slice(i, i + batchSize);
+
+        await Promise.all(chunk.map(async (url) => {
+
+          try {
+            const res = await request.get(url, { timeout: 15000 });
+
+            if (res.status() >= 400) {
+              type === 'link'
+                ? brokenLinks.add(url)
+                : brokenImages.add(url);
+            } else {
+              type === 'link'
+                ? validLinks.add(url)
+                : validImages.add(url);
+            }
+
+          } catch {
+            type === 'link'
+              ? brokenLinks.add(url)
+              : brokenImages.add(url);
+          }
+        }));
       }
-    }));
-  };
-
-  while (toVisit.length > 0) {
-
-    const url = toVisit.shift();
-    if (visited.has(url)) continue;
-
-    visited.add(url);
-
-    try {
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-    } catch {
-      brokenLinks.add(url);
-      continue;
-    }
+    };
 
     // =========================
-    // 🔽 LOAD MORE HANDLING
+    // 🔁 MAIN CRAWL LOOP
     // =========================
-    while (true) {
-      const loadMoreBtn = page.locator('text=Load More');
+    while (index < queue.length) {
 
-      if (await loadMoreBtn.isVisible().catch(() => false)) {
+      const url = queue[index++];
+
+      if (!url || visited.has(url)) continue;
+
+      visited.add(url);
+
+      console.log(`Crawling [${visited.size}] => ${url}`);
+
+      try {
+        await page.goto(url, {
+          waitUntil: 'domcontentloaded',
+          timeout: 60000
+        });
+      } catch {
+        brokenLinks.add(url);
+        continue;
+      }
+
+      // =========================
+      // 🔽 LOAD MORE
+      // =========================
+      for (let i = 0; i < 20; i++) {
+
+        const loadMoreBtn = page.locator('text=Load More');
+
+        if (!(await loadMoreBtn.isVisible().catch(() => false)))
+          break;
+
         try {
           await loadMoreBtn.click();
-          await page.waitForTimeout(2000);
+          await page.waitForTimeout(1000);
         } catch {
           break;
         }
-      } else {
-        break;
       }
+
+      // =========================
+      // 🔗 LINKS
+      // =========================
+      const links = await page.$$eval('a[href]', els =>
+        [...new Set(els.map(e => e.href))]
+      );
+
+      const filteredLinks = links.filter(link =>
+        link &&
+        link.startsWith(baseURL) &&
+        !link.includes('#') &&
+        !link.startsWith('mailto:') &&
+        !link.startsWith('tel:') &&
+        !link.includes('/cart') &&
+        !link.includes('/checkout') &&
+        !link.includes('/account')
+      );
+
+      // =========================
+      // 🖼️ IMAGES
+      // =========================
+      const images = await page.$$eval('img[src]', imgs =>
+        [...new Set(imgs.map(i => i.src))]
+      );
+
+      // =========================
+      // 🚀 QUEUE ADD
+      // =========================
+      for (const link of filteredLinks) {
+        if (!visited.has(link)) {
+          queue.push(link);
+        }
+      }
+
+      // =========================
+      // ⚡ DEDUP VALIDATION
+      // =========================
+      const newLinks = filteredLinks.filter(l => {
+        if (checkedLinks.has(l)) return false;
+        checkedLinks.add(l);
+        return true;
+      });
+
+      const newImages = images.filter(i => {
+        if (checkedImages.has(i)) return false;
+        checkedImages.add(i);
+        return true;
+      });
+
+      await Promise.all([
+        validateBatch(newLinks, 'link'),
+        validateBatch(newImages, 'image')
+      ]);
+
+      console.log(`Visited: ${visited.size} | Queue: ${queue.length}`);
     }
 
     // =========================
-    // 🔗 EXTRACT LINKS
+    // 📊 REPORT
     // =========================
-    const links = await page.$$eval('a', anchors =>
-      anchors.map(a => a.href).filter(Boolean)
-    );
+    console.log('\n=========== FINAL REPORT ===========');
 
-    const filteredLinks = links.filter(link =>
-      link.startsWith(baseURL) &&
-      !link.includes('#') &&
-      !link.startsWith('mailto:') &&
-      !link.startsWith('tel:')
-    );
+    console.log(`\n❌ Broken Links (${brokenLinks.size})`);
+    [...brokenLinks].forEach(l => console.log(l));
 
-    // Add new pages to crawl
-    filteredLinks.forEach(link => {
-      if (!visited.has(link)) toVisit.push(link);
-    });
+    console.log(`\n❌ Broken Images (${brokenImages.size})`);
+    [...brokenImages].forEach(i => console.log(i));
 
-    // =========================
-    // 🖼️ EXTRACT IMAGES
-    // =========================
-    const images = await page.$$eval('img', imgs =>
-      imgs.map(img => img.src).filter(Boolean)
-    );
+    console.log(`\n✅ Valid Links (${validLinks.size})`);
+    [...validLinks].forEach(l => console.log(l));
 
-    // =========================
-    // ⚡ PARALLEL VALIDATION
-    // =========================
-    await checkUrlsInParallel(filteredLinks, 'link');
-    await checkUrlsInParallel(images, 'image');
+    console.log(`\n✅ Valid Images (${validImages.size})`);
+    [...validImages].forEach(i => console.log(i));
 
-    // =========================
-    // 🛑 SAFETY LIMIT (IMPORTANT)
-    // =========================
-    if (visited.size > 500) {
-      console.log('⚠️ Limit reached, stopping crawl...');
-      break;
-    }
-  }
+    const toCSV = (data) =>
+      [...data].map(x => `"${x}"`).join('\n');
 
-  // =========================
-  // 📊 FINAL OUTPUT
-  // =========================
-  console.log('\n=========== FINAL REPORT ===========');
+    fs.writeFileSync('broken-links.csv', toCSV(brokenLinks));
+    fs.writeFileSync('broken-images.csv', toCSV(brokenImages));
+    fs.writeFileSync('valid-links.csv', toCSV(validLinks));
+    fs.writeFileSync('valid-images.csv', toCSV(validImages));
 
-  console.log(`\n❌ Broken Links (${brokenLinks.size})`);
-  [...brokenLinks].forEach(l => console.log(l));
-
-  console.log(`\n❌ Broken Images (${brokenImages.size})`);
-  [...brokenImages].forEach(i => console.log(i));
-
-  console.log(`\n✅ Valid Links (${validLinks.size})`);
-  [...validLinks].forEach(l => console.log(l));
-
-  console.log(`\n✅ Valid Images (${validImages.size})`);
-  [...validImages].forEach(i => console.log(i));
-
-  // =========================
-  // 📁 CSV REPORT
-  // =========================
-  const toCSV = (data) => [...data].map(x => `"${x}"`).join('\n');
-
-  fs.writeFileSync('broken-links.csv', toCSV(brokenLinks));
-  fs.writeFileSync('broken-images.csv', toCSV(brokenImages));
+    console.log('\n✅ Reports generated successfully');
+  });
 
 });
