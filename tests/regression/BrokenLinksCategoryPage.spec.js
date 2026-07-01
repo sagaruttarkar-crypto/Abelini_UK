@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Category Page - Image + SKU + Broken Validation', async ({ page }) => {
 
-  const baseURL = 'https://www.abelini.com.au';
+  const baseURL = 'https://live.abelini.com';
    test.setTimeout(600000);
   await page.goto(`${baseURL}/wedding-rings/womens`, {
     waitUntil: 'domcontentloaded'
@@ -15,7 +15,7 @@ test('Category Page - Image + SKU + Broken Validation', async ({ page }) => {
         await page.evaluate(() => window.scrollBy(0, window.innerHeight * 2));
         await page.waitForTimeout(3000);
 
-        const btn = page.getByRole('button', { name: /load more/i });
+       const btn = page.getByRole('link', { name: /LOAD MORE PRODUCTS/i });
 
         if (await btn.isVisible().catch(() => false)) {
           return btn;
