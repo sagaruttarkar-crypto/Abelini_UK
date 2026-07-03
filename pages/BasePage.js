@@ -364,13 +364,14 @@ async validateAllBlogsLinks() {
   const allBlogLinks = new Set();
   const checkedLinks = new Map();
 
+  console.log("Loading all blogs...");
+
   // ==========================================
   // STEP 1 - Load all blogs
   // ==========================================
-
   while (true) {
 
-    // Collect currently visible blogs
+    // Collect all visible blog URLs
     const blogLinks = await this.page.$$eval(
       'a[href*="/blog/"]',
       links =>
@@ -388,7 +389,7 @@ async validateAllBlogsLinks() {
 
     blogLinks.forEach(link => allBlogLinks.add(link));
 
-    console.log(`Collected Blogs : ${allBlogLinks.size}`);
+    console.log(`Collected Blogs: ${allBlogLinks.size}`);
 
     const loadMore = this.page.getByRole('button', {
       name: /load more/i
@@ -405,137 +406,155 @@ async validateAllBlogsLinks() {
 
     await loadMore.click();
 
-    await this.page.waitForFunction(
-      previous => {
-        const blogs = new Set(
-          [...document.querySelectorAll('a[href*="/blog/"]')]
-            .map(a => a.href)
-            .filter(href =>
-              href &&
-              !href.includes('/blog?page=') &&
-              !href.endsWith('/blog') &&
-              !href.endsWith('/blog/')
-            )
-        );
+    try {
+      await this.page.waitForFunction(
+        previous => {
+          const count = [...document.querySelectorAll('a[href*="/blog/"]')]
+            .filter(a =>
+              !a.href.includes('/blog?page=') &&
+              !a.href.endsWith('/blog') &&
+              !a.href.endsWith('/blog/')
+            ).length;
 
-        return blogs.size > previous;
-      },
-      previousCount,
-      { timeout: 30000 }
-    );
-  }
-
-  console.log(`\nTotal Blogs Found : ${allBlogLinks.size}`);
-
-  // ==========================================
-  // STEP 2 - Validate blog links
-  // ==========================================
-
-  for (const blogUrl of allBlogLinks) {
-
-    console.log(`\nChecking Blog : ${blogUrl}`);
-
-    await this.page.goto(blogUrl, {
-      waitUntil: "domcontentloaded",
-      timeout: 60000
-    });
-
-    await this.page.waitForLoadState("networkidle");
-
-    // Only links inside blog article
-    const links = await this.page
-      .locator(".max-w-6xl.mx-auto.lg\\:px-5 a[href]")
-      .evaluateAll(elements =>
-        [...new Set(elements.map(el => el.href))]
+          return count > previous;
+        },
+        previousCount,
+        { timeout: 30000 }
       );
-
-    console.log(`Found ${links.length} article links`);
-
-    for (const url of links) {
-
-      if (
-        !url ||
-        url.startsWith("mailto:") ||
-        url.startsWith("tel:") ||
-        url.startsWith("javascript:") ||
-        url.includes("#")
-      ) {
-        continue;
-      }
-
-      // Only internal links
-      if (!url.startsWith(new URL(blogUrl).origin)) {
-        continue;
-      }
-
-      // Skip already checked links
-      if (checkedLinks.has(url)) {
-
-        if (checkedLinks.get(url) >= 400) {
-          brokenLinks.push({
-            Blog: blogUrl,
-            Link: url,
-            Status: checkedLinks.get(url)
-          });
-        }
-
-        continue;
-      }
-
-      try {
-
-        let response = await this.request.head(url, {
-          failOnStatusCode: false
-        });
-
-        // Some servers don't support HEAD
-        if (response.status() === 405 || response.status() === 501) {
-          response = await this.request.get(url, {
-            failOnStatusCode: false
-          });
-        }
-
-        checkedLinks.set(url, response.status());
-
-        if (response.status() >= 400) {
-
-          brokenLinks.push({
-            Blog: blogUrl,
-            Link: url,
-            Status: response.status()
-          });
-
-          console.log(`❌ ${response.status()} : ${url}`);
-
-        } else {
-
-          console.log(`✅ ${response.status()} : ${url}`);
-
-        }
-
-      } catch {
-
-        checkedLinks.set(url, "FAILED");
-
-        brokenLinks.push({
-          Blog: blogUrl,
-          Link: url,
-          Status: "FAILED"
-        });
-
-        console.log(`❌ FAILED : ${url}`);
-      }
+    } catch {
+      // Load More disappeared after last click
+      console.log("Reached last blog page.");
+      break;
     }
   }
 
-  console.log("\n=================================");
-  console.log(`Total Blogs Loaded : ${allBlogLinks.size}`);
+  console.log(`\nTotal Blogs Found: ${allBlogLinks.size}`);
+
+  // ==========================================
+  // STEP 2 - Validate every blog
+  // ==========================================
+  for (const blogUrl of allBlogLinks) {
+
+    try {
+
+      console.log(`\nChecking Blog: ${blogUrl}`);
+
+      await this.page.goto(blogUrl, {
+        waitUntil: "domcontentloaded",
+        timeout: 60000
+      });
+
+      await this.page.waitForLoadState("networkidle");
+
+      // Only links inside the blog content
+      const links = await this.page
+        .locator(".max-w-6xl.mx-auto.lg\\:px-5 a[href]")
+        .evaluateAll(elements =>
+          [...new Set(elements.map(el => el.href))]
+        );
+
+      console.log(`Found ${links.length} content links`);
+
+      for (const url of links) {
+
+        if (
+          !url ||
+          url.startsWith("mailto:") ||
+          url.startsWith("tel:") ||
+          url.startsWith("javascript:") ||
+          url.includes("#")
+        ) {
+          continue;
+        }
+
+        // Validate only internal links
+        if (!url.startsWith(new URL(blogUrl).origin)) {
+          continue;
+        }
+
+        // Skip duplicate links
+        if (checkedLinks.has(url)) {
+
+          if (checkedLinks.get(url) >= 400) {
+            brokenLinks.push({
+              Blog: blogUrl,
+              Link: url,
+              Status: checkedLinks.get(url)
+            });
+          }
+
+          continue;
+        }
+
+        try {
+
+          let response = await this.request.head(url, {
+            failOnStatusCode: false
+          });
+
+          if (response.status() === 405 || response.status() === 501) {
+            response = await this.request.get(url, {
+              failOnStatusCode: false
+            });
+          }
+
+          checkedLinks.set(url, response.status());
+
+          if (response.status() >= 400) {
+
+            brokenLinks.push({
+              Blog: blogUrl,
+              Link: url,
+              Status: response.status()
+            });
+
+            console.log(`❌ ${response.status()} : ${url}`);
+
+          } else {
+
+            console.log(`✅ ${response.status()} : ${url}`);
+
+          }
+
+        } catch (error) {
+
+          checkedLinks.set(url, "FAILED");
+
+          brokenLinks.push({
+            Blog: blogUrl,
+            Link: url,
+            Status: "FAILED"
+          });
+
+          console.log(`❌ FAILED : ${url}`);
+        }
+      }
+
+    } catch (error) {
+
+      console.log(`❌ Failed to open blog: ${blogUrl}`);
+      console.log(error.message);
+
+      brokenLinks.push({
+        Blog: blogUrl,
+        Link: "BLOG_PAGE",
+        Status: "FAILED_TO_OPEN"
+      });
+
+      continue;
+    }
+  }
+
+  console.log("\n========================================");
+  console.log(`Total Blogs Loaded   : ${allBlogLinks.size}`);
   console.log(`Unique Links Checked : ${checkedLinks.size}`);
-  console.log(`Broken Links : ${brokenLinks.length}`);
-  console.log("=================================");
+  console.log(`Broken Links Found   : ${brokenLinks.length}`);
+  console.log("========================================");
 
   if (brokenLinks.length) {
     console.table(brokenLinks);
+  } else {
+    console.log("🎉 No broken links found.");
   }
 
   return brokenLinks;

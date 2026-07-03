@@ -1,6 +1,6 @@
 const { test } = require('@playwright/test');
 
-const BASE_URL = 'https://dev.abelini.com';
+const BASE_URL = 'https://www.abelini.com';
 const START_URL = `${BASE_URL}/sitemap`;
 const SEARCH_WORD = 'RRP';
 

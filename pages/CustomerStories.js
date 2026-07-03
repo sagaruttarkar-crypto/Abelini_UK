@@ -43,7 +43,7 @@ async validateAllCustomerStoryCards() {
     await expect(image).toBeVisible();
 
     // Scroll before clicking (important)
-    await card.scrollIntoViewIfNeeded();
+    //await card.scrollIntoViewIfNeeded();
 
     // Click card
     await Promise.all([

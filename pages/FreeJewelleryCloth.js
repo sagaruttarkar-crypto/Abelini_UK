@@ -17,12 +17,12 @@ class FreeJewelleryCloth extends BasePage {
 async validateForm() {
   const firstName = this.page.getByRole('textbox', { name: 'First Name' });
   const lastName = this.page.getByRole('textbox', { name: 'Last Name' });
-  const mobile = this.page.getByRole('textbox', { name: 'Mobile' });
+  const mobile = this.page.getByPlaceholder('Mobile');
   const email = this.page.getByRole('textbox', { name: 'E-Mail' });
   const address = this.page.getByRole('textbox', { name: 'Address line 1' });
   const address2 = this.page.getByRole('textbox', { name: 'Address line 2' });
   const city = this.page.getByRole('textbox', { name: 'City' });
-  const postcode = this.page.getByRole('textbox', { name: 'Enter your postcode' });    
+  const postcode = this.page.getByPlaceholder('Enter your postcode');
 
   await firstName.fill('Automation First_name');
   await lastName.fill('Automation Last_name');

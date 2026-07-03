@@ -3,8 +3,8 @@ const xml2js = require('xml2js');
 const SitemapPage = require('../../pages/SitemapPage');
 
 // Config
-const SITEMAP_IMAGE_URL = 'https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/sitemap-image.xml';
-const BASE_SITEMAP_URL = 'https://abelini-de-5e4c9d5a438332d59249.o2.myshopify.dev/sitemap.xml';
+const SITEMAP_IMAGE_URL = 'https://www.abelini.com/sitemap-image.xml';
+const BASE_SITEMAP_URL = 'https://www.abelini.com/sitemap.xml';
 
 const BATCH_SIZE = 5;
 const RETRIES = 2;
