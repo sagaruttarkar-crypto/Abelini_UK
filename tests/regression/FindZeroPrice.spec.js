@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
 
-  const baseURL = 'https://www.abelini.com.au';
+  const baseURL = 'https://www.abelini.com';
   test.setTimeout(600000);
 
   await page.goto(`${baseURL}/engagement-rings/gemstone-engagement-ring`, {
@@ -15,7 +15,7 @@ test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
       await page.evaluate(() => window.scrollBy(0, window.innerHeight * 2));
       await page.waitForTimeout(2500);
 
-      const btn = page.getByRole('button', { name: /load more/i });
+      const btn =  page.getByRole('link', {name: 'LOAD MORE PRODUCTS...'});
 
       if (await btn.isVisible().catch(() => false)) {
         await btn.click();
