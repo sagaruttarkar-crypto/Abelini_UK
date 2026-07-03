@@ -3,14 +3,30 @@ import { test, expect } from '@playwright/test';
 test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
 
   const baseURL = 'https://www.abelini.com';
-  test.setTimeout(600000);
+ test.setTimeout(30 * 60 * 1000);
 
   await page.goto(`${baseURL}/engagement-rings`, {
     waitUntil: 'domcontentloaded'
   });
 
   // 🔁 LOAD MORE LOGIC
- 
+  // async function loadAllProducts() {
+  //   for (let i = 0; i < 9; i++) {
+  //     await page.evaluate(() => window.scrollBy(0, window.innerHeight * 1));
+  //     await page.waitForTimeout(2500);
+
+  //     const btn =  page.getByRole('link', {name: 'LOAD MORE PRODUCTS...'});
+
+  //     if (await btn.isVisible().catch(() => false)) {
+  //       await btn.click();
+  //       console.log(`➡️ Load More clicked (${i + 1})`);
+  //       await page.waitForTimeout(3000);
+  //     } else {
+  //       console.log('🛑 No more Load More');
+  //       break;
+  //     }
+  //   }
+  // }
   async function loadAllProducts() {
   const loadMoreBtn = page.getByRole('link', {
     name: /LOAD MORE PRODUCTS/i,
