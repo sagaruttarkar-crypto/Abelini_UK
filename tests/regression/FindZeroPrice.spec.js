@@ -5,28 +5,64 @@ test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
   const baseURL = 'https://www.abelini.com';
   test.setTimeout(600000);
 
-  await page.goto(`${baseURL}/engagement-rings/gemstone-engagement-ring`, {
+  await page.goto(`${baseURL}/engagement-rings`, {
     waitUntil: 'domcontentloaded'
   });
 
   // 🔁 LOAD MORE LOGIC
+ 
   async function loadAllProducts() {
-    for (let i = 0; i < 9; i++) {
-      await page.evaluate(() => window.scrollBy(0, window.innerHeight * 2));
-      await page.waitForTimeout(2500);
+  const loadMoreBtn = page.getByRole('link', {
+    name: /LOAD MORE PRODUCTS/i,
+  });
 
-      const btn =  page.getByRole('link', {name: 'LOAD MORE PRODUCTS...'});
+  let clickCount = 0;
+  const maxClicks = 50;
 
-      if (await btn.isVisible().catch(() => false)) {
-        await btn.click();
-        console.log(`➡️ Load More clicked (${i + 1})`);
-        await page.waitForTimeout(3000);
-      } else {
-        console.log('🛑 No more Load More');
-        break;
+  while (clickCount < maxClicks) {
+
+    // Keep scrolling until button appears
+    while (!(await loadMoreBtn.isVisible().catch(() => false))) {
+
+      const previousHeight = await page.evaluate(
+        () => document.body.scrollHeight
+      );
+
+      await page.mouse.wheel(0, 1500);
+      await page.waitForTimeout(700);
+
+      const currentHeight = await page.evaluate(
+        () => document.body.scrollHeight
+      );
+
+      // Reached end and button not found
+      if (previousHeight === currentHeight) {
+        console.log('✅ No more Load More button.');
+        return;
       }
     }
+
+    const beforeCount = await page.locator('div[data-product-id]').count();
+
+    await loadMoreBtn.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    await loadMoreBtn.click();
+
+    clickCount++;
+    console.log(`➡️ Load More clicked (${clickCount})`);
+
+    // Wait until more products are loaded
+    await page.waitForFunction(
+      (count) =>
+        document.querySelectorAll('div[data-product-id]').length > count,
+      beforeCount,
+      { timeout: 15000 }
+    );
+
+    await page.waitForTimeout(1500);
   }
+}
 
   await loadAllProducts();
 
