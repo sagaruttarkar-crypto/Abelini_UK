@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Category Page - Image + SKU + Broken Validation', async ({ page }) => {
 
-  const baseURL = 'https://www.abelini.com.au';
+  const baseURL = 'https://www.abelini.com';
    test.setTimeout(600000);
   await page.goto(`${baseURL}/wedding-rings/womens`, {
     waitUntil: 'domcontentloaded'
