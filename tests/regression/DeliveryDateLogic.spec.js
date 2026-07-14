@@ -80,7 +80,7 @@ test('Validate delivery date for AU (full logic in one file)', async ({ page, re
   //  Test Execution Starts Here
   // ================================
 
-  await page.goto('https://www.abelini.com.au/product/4-prong-setting-classic-oval-shape-hidden-halo-diamond-engagement-ring-rinw8477-lbg#metal=GL_9K_W'); // 🔁 replace
+  await page.goto('https://www.abelini.com/product/4-prong-setting-classic-oval-shape-hidden-halo-diamond-engagement-ring-rinw8477-lbg#metal=GL_9K_W'); // 🔁 replace
 
   // Use AU timezone (VERY IMPORTANT)
   const orderDate = new Date(

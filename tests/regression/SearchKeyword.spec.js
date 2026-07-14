@@ -2,7 +2,7 @@ const { test } = require('@playwright/test');
 
 const BASE_URL = 'https://www.abelini.com';
 const START_URL = `${BASE_URL}/sitemap`;
-const SEARCH_WORD = 'RRP';
+const SEARCH_WORD = '$';
 
 test('Full site crawler (optimized)', async ({ page }) => {
   test.setTimeout(10 * 60 * 1000); // 10 minutes
@@ -13,9 +13,9 @@ test('Full site crawler (optimized)', async ({ page }) => {
   });
 
   // Login
-  await page.getByPlaceholder('Username').fill('admin');
-  await page.getByPlaceholder('Password').fill('admin');
-  await page.getByRole('button', { name: 'Enter' }).click();
+  // await page.getByPlaceholder('Username').fill('admin');
+  // await page.getByPlaceholder('Password').fill('admin');
+  // await page.getByRole('button', { name: 'Enter' }).click();
 
   // Wait until login completes
   await page.waitForLoadState('networkidle');
