@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
+test('Capture ALL product links + find broken PDP images', async ({ page }) => {
 
     const baseURL = 'https://www.abelini.com';
     test.setTimeout(3 * 60 * 60 * 1000);
 
-    await page.goto(`${baseURL}/ready-to-deliver`, {
+    await page.goto(`${baseURL}/engagement-rings`, {
         waitUntil: 'domcontentloaded'
     });
 
@@ -71,32 +71,17 @@ test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
     // 🧠 WAIT for products to fully render
     await page.waitForTimeout(5000);
 
-    // ✅ EXTRACT CORRECTLY FROM PRODUCT CARD
+    // ✅ EXTRACT PRODUCT LINKS FROM LISTING CARDS
     const products = await page.$$eval(
         'div[data-product-id]',
         cards => {
-
-            const cleanPrice = (text) => {
-                if (!text) return 0;
-                const num = text.replace(/[^0-9.]/g, '');
-                return num ? parseFloat(num) : 0;
-            };
-
             return cards.map(card => {
-
                 const linkEl = card.querySelector('a[href*="/product"]');
                 const titleEl = card.querySelector('h2');
-                const priceEl = card.querySelector('p span:last-child');
-
-                const url = linkEl ? linkEl.href : '';
-                const title = titleEl ? titleEl.textContent.trim() : '';
-                const priceText = priceEl ? priceEl.textContent.trim() : '';
 
                 return {
-                    title,
-                    url,
-                    priceText,
-                    price: cleanPrice(priceText)
+                    title: titleEl ? titleEl.textContent.trim() : '',
+                    url: linkEl ? linkEl.href : ''
                 };
             });
         }
@@ -111,8 +96,8 @@ test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
 
     console.log(`🧹 Unique products: ${uniqueProducts.length}`);
 
-    // 🔍 CHECK EACH PRODUCT PAGE FOR £NaN
-    const nanPriceProducts = [];
+    // 🔍 CHECK EACH PRODUCT PAGE FOR BROKEN IMAGES
+    const brokenImageProducts = [];
 
     for (let i = 0; i < uniqueProducts.length; i++) {
         const product = uniqueProducts[i];
@@ -121,6 +106,16 @@ test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
             continue;
         }
 
+        // Track any image responses that come back with an error status
+        const failedImageUrls = new Set();
+        const onResponse = (response) => {
+            const req = response.request();
+            if (req.resourceType() === 'image' && response.status() >= 400) {
+                failedImageUrls.add(req.url());
+            }
+        };
+        page.on('response', onResponse);
+
         try {
             await page.goto(product.url, {
                 waitUntil: 'domcontentloaded'
@@ -128,22 +123,45 @@ test('Capture ALL product links + prices (FIXED)', async ({ page }) => {
 
             await page.waitForTimeout(3000);
 
-            const productPageText = await page.evaluate(() => {
-                return document.body.innerText || '';
+            // Check every <img> on the PDP for broken/zero-size sources
+            const brokenFromDom = await page.$$eval('img', (imgs) => {
+                return imgs
+                    .filter((img) => {
+                        if (!img.src) return false;
+                        const loadedButEmpty =
+                            img.complete && img.naturalWidth === 0 && img.naturalHeight === 0;
+                        return loadedButEmpty;
+                    })
+                    .map((img) => ({
+                        src: img.src,
+                        reason: 'zero-dimension / failed to render'
+                    }));
             });
 
-            if (/£\s*NaN/i.test(productPageText)) {
-                nanPriceProducts.push({
+            const brokenFromNetwork = Array.from(failedImageUrls).map(src => ({
+                src,
+                reason: 'HTTP error response'
+            }));
+
+            // Merge & dedupe by src
+            const allBroken = [
+                ...new Map(
+                    [...brokenFromDom, ...brokenFromNetwork].map(b => [b.src, b])
+                ).values()
+            ];
+
+            if (allBroken.length > 0) {
+                brokenImageProducts.push({
                     title: product.title,
                     url: product.url,
-                    priceText: '£NaN'
+                    brokenImages: allBroken
                 });
 
                 console.log(`
-${nanPriceProducts.length}
+${brokenImageProducts.length}
 🛍️ ${product.title}
 🔗 ${product.url}
-💰 Price Text: £NaN
+🖼️ Broken images: ${allBroken.map(b => `${b.src} (${b.reason})`).join(', ')}
         `);
             }
 
@@ -152,9 +170,11 @@ ${nanPriceProducts.length}
         } catch (err) {
             console.log(`❌ Error checking product: ${product.url}`);
             console.log(err.message);
+        } finally {
+            page.off('response', onResponse);
         }
     }
 
-    console.log(`🚨 £NaN price products: ${nanPriceProducts.length}`);
+    console.log(`🚨 Products with broken images: ${brokenImageProducts.length}`);
 
 });
