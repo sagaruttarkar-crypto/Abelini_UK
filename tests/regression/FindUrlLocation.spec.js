@@ -1,260 +1,107 @@
-import { test } from '@playwright/test';
-import fs from 'fs';
+const { test } = require('@playwright/test');
+const fs = require('fs');
 
-test('Find Deleted URLs Across Entire Website', async ({ browser }) => {
+test('Find URL Locations', async ({ page }) => {
+  test.setTimeout(30 * 60 * 1000); // 30 mins
 
-    test.setTimeout(0);
+  const START_URL = 'https://www.abelini.com.au/sitemap';
+  const DOMAIN = 'https://www.abelini.com.au';
 
-    const BASE = 'https://www.abelini.com';
-    const START = `${BASE}/sitemap`;
+  const expectedLinks = fs
+    .readFileSync('Urls.txt', 'utf8')
+    .split(/\r?\n/)
+    .map(x => x.trim().replace(/\/$/, ''))
+    .filter(Boolean);
 
-    //--------------------------------------------------
-    // Read Deleted URLs
-    //--------------------------------------------------
+  const visited = new Set();
+  const foundLinks = new Map();
+  const results = [];
 
-    const deletedUrls = fs
-        .readFileSync('Urls.txt', 'utf8')
-        .split(/\r?\n/)
-        .map(x => x.trim())
-        .filter(Boolean);
+  const queue = [START_URL];
 
-    console.log(`Deleted URLs : ${deletedUrls.length}`);
+  while (queue.length > 0) {
+    const currentUrl = queue.shift()?.replace(/\/$/, '');
 
-    //--------------------------------------------------
-    // Browser
-    //--------------------------------------------------
-
-    const context = await browser.newContext({
-        ignoreHTTPSErrors: true
-    });
-
-    const page = await context.newPage();
-
-    //--------------------------------------------------
-    // Crawl Queue
-    //--------------------------------------------------
-
-    const queue = [START];
-
-    const visited = new Set();
-
-    const results = [];
-
-    //--------------------------------------------------
-    // Crawl
-    //--------------------------------------------------
-
-    while (queue.length > 0) {
-
-        const current = queue.shift();
-
-        if (!current)
-            continue;
-
-        if (visited.has(current))
-            continue;
-
-        visited.add(current);
-
-        console.log(
-            `[${visited.size}] ${current}`
-        );
-
-        try {
-
-            await page.goto(current, {
-                waitUntil: 'domcontentloaded',
-                timeout: 60000
-            });
-
-        } catch {
-
-            continue;
-
-        }
-
-        //--------------------------------------------------
-        // Find all href/src
-        //--------------------------------------------------
-
-        const pageLinks = await page.evaluate(() => {
-
-            const arr = [];
-
-            document
-                .querySelectorAll(
-                    'a[href],img[src],script[src],link[href]'
-                )
-                .forEach(el => {
-
-                    const url =
-                        el.getAttribute('href') ||
-                        el.getAttribute('src');
-
-                    arr.push({
-                        tag: el.tagName.toLowerCase(),
-                        url
-                    });
-
-                });
-
-            //--------------------------------------------------
-
-            const canonical = document.querySelector(
-                'link[rel="canonical"]'
-            );
-
-            if (canonical) {
-
-                arr.push({
-                    tag: 'canonical',
-                    url: canonical.href
-                });
-
-            }
-
-            //--------------------------------------------------
-
-            const og = document.querySelector(
-                'meta[property="og:url"]'
-            );
-
-            if (og) {
-
-                arr.push({
-                    tag: 'og:url',
-                    url: og.content
-                });
-
-            }
-
-            return arr;
-
-        });
-
-        //--------------------------------------------------
-        // Compare Deleted URLs
-        //--------------------------------------------------
-
-        for (const item of pageLinks) {
-
-            if (!item.url)
-                continue;
-
-            let absolute;
-
-            try {
-
-                absolute = new URL(item.url, current).href;
-
-            } catch {
-
-                continue;
-
-            }
-
-            //--------------------------------------------------
-
-            for (const deleted of deletedUrls) {
-
-                if (
-                    absolute === deleted ||
-                    absolute.startsWith(deleted)
-                ) {
-
-                    results.push({
-
-                        deleted,
-
-                        foundOn: current,
-
-                        tag: item.tag,
-
-                        matched: absolute
-
-                    });
-
-                }
-
-            }
-
-            //--------------------------------------------------
-            // Add Internal Links
-            //--------------------------------------------------
-
-            if (
-                absolute.startsWith(BASE) &&
-                !visited.has(absolute) &&
-                !queue.includes(absolute)
-            ) {
-
-                const ignore = [
-
-                    '.jpg',
-                    '.jpeg',
-                    '.png',
-                    '.gif',
-                    '.svg',
-                    '.webp',
-                    '.pdf',
-                    '.zip',
-                    '.xml',
-                    '.ico',
-                    '.css',
-                    '.js'
-
-                ];
-
-                if (
-                    !ignore.some(x =>
-                        absolute.toLowerCase().includes(x)
-                    )
-                ) {
-
-                    queue.push(absolute);
-
-                }
-
-            }
-
-        }
-
-        console.clear();
-
-        console.log('===============================');
-        console.log('Pages Crawled :', visited.size);
-        console.log('Queue         :', queue.length);
-        console.log('Matches       :', results.length);
-        console.log('===============================');
-
+    if (!currentUrl || visited.has(currentUrl)) {
+      continue;
     }
 
-    //--------------------------------------------------
-    // Save CSV
-    //--------------------------------------------------
+    visited.add(currentUrl);
 
-    let csv =
-        'Deleted URL,Found On Page,Element,Matched URL\n';
+    try {
+      console.log(`[${visited.size}] Scanning: ${currentUrl}`);
 
-    results.forEach(r => {
+      await page.goto(currentUrl, {
+        waitUntil: 'domcontentloaded',
+        timeout: 60000
+      });
 
-        csv += `"${r.deleted}","${r.foundOn}","${r.tag}","${r.matched}"\n`;
+      const links = await page.$$eval('a[href]', anchors =>
+        anchors.map(a => ({
+          href: a.href.replace(/\/$/, ''),
+          page: window.location.href.replace(/\/$/, '')
+        }))
+      );
 
-    });
+      for (const link of links) {
+        if (!foundLinks.has(link.href)) {
+          foundLinks.set(link.href, link.page);
+        }
 
-    fs.writeFileSync(
-        'Urls_Report.csv',
-        csv
-    );
+        if (
+          link.href.startsWith(DOMAIN) &&
+          !visited.has(link.href) &&
+          !queue.includes(link.href)
+        ) {
+          queue.push(link.href);
+        }
+      }
 
-    console.log('--------------------------------');
-    console.log('Total Pages   :', visited.size);
-    console.log('Matches Found :', results.length);
-    console.log('CSV Generated : Deleted_URL_Report.csv');
-    console.log('--------------------------------');
+      console.log(
+        `Visited: ${visited.size} | Queue: ${queue.length} | Found Links: ${foundLinks.size}`
+      );
 
-    await context.close();
+    } catch (error) {
+      console.log(`❌ Failed: ${currentUrl}`);
+      console.log(error.message);
+    }
+  }
 
-    // commit 
-    
+  console.log('\n==============================');
+  console.log('SEARCH RESULTS');
+  console.log('==============================\n');
+
+  for (const targetUrl of expectedLinks) {
+    if (foundLinks.has(targetUrl)) {
+      const foundOn = foundLinks.get(targetUrl);
+
+      console.log(`✅ FOUND: ${targetUrl}`);
+      console.log(`   Found On: ${foundOn}`);
+
+      results.push({
+        url: targetUrl,
+        status: 'FOUND',
+        foundOn
+      });
+    } else {
+      console.log(`❌ NOT FOUND: ${targetUrl}`);
+
+      results.push({
+        url: targetUrl,
+        status: 'NOT FOUND',
+        foundOn: ''
+      });
+    }
+  }
+
+  fs.writeFileSync(
+    'FindUrlResults.json',
+    JSON.stringify(results, null, 2)
+  );
+
+  console.log('\n================================');
+  console.log(`Pages Visited : ${visited.size}`);
+  console.log(`Links Found   : ${foundLinks.size}`);
+  console.log('Results saved : FindUrlResults.json');
+  console.log('================================');
 });
