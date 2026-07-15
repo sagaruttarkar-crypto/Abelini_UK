@@ -7,7 +7,7 @@ test.describe('Shopify Broken Links + Images Crawler', () => {
 
     console.log('✅ TEST STARTED - CRAWLER RUNNING');
 
-    const baseURL = 'https://live.abelini.com/';
+    const baseURL = 'https://www.abelini.com/';
 
     const visited = new Set();
     const queue = [baseURL];
