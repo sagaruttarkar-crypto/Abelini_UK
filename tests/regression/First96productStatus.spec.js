@@ -7,7 +7,7 @@ const categories = [
   '/wedding-rings',
 ];
 
-const PRODUCTS_PER_CATEGORY = 10;
+const PRODUCTS_PER_CATEGORY = 96;
 
 test('Check first 96 products per category for 200/404 status', async ({ page }) => {
 
