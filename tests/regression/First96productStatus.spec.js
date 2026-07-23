@@ -4,17 +4,134 @@ const baseURL = 'https://www.abelini.com';
 
 const categories = [
   '/engagement-rings',
+  '/engagement-rings/classic-solitaire',
+  '/engagement-rings/halo-rings',
+  '/engagement-rings/side-stone-shoulder-set-rings',
+  '/engagement-rings/illusion-set-rings',
+  '/engagement-rings/toi-et-moi',
+  '/engagement-rings/couples',
+  '/engagement-rings/trilogy-rings',
+  '/engagement-rings/twisted-engagement-ring',
+  '/engagement-rings/gemstone-engagement-ring',
+  '/engagement-rings/diamond-band',
+  '/engagement-rings/unique-engagement-rings',
+  '/engagement-rings?filter_param=5.170',
+  '/engagement-rings/antique-engagement-rings',
+  '/engagement-rings/vintage-engagement-rings',
+  '/engagement-rings/minimalist-engagement-rings',
+  '/engagement-rings/mens',
+  '/engagement-rings/womens',
+  '/engagement-rings/black-diamond',
+  '/engagement-rings/ruby',
+  '/engagement-rings/tanzanite',
+  '/engagement-rings/emeralds',
+  '/engagement-rings/blue-sapphire',
+  '/engagement-rings/aquamarine',
+  '/engagement-rings/moissanite',
+  '/engagement-rings/oval',
+  '/engagement-rings/amethyst',
   '/wedding-rings',
+  '/wedding-rings/couples',
+  '/wedding-rings?filter_param=5.474',
+  '/wedding-rings/unique-mens-wedding-bands',
+  '/wedding-rings?filter_param=5.67',
+  '/wedding-rings/plain',
+  '/wedding-rings/vintage-wedding-rings',
+  '/wedding-rings?filter_param=5.68',
+  '/wedding-rings/unusual-wedding-rings',
+  '/wedding-rings?filter_param=5.104',
+  '/wedding-rings?filter_param=5.69',
+  '/wedding-rings/bands',
+  '/wedding-rings/diamond-band',
+  '/wedding-rings/mens',
+  '/wedding-rings/womens',
+  '/wedding-rings/rose-gold',
+  '/wedding-rings/white-gold',
+  '/wedding-rings/yellow-gold',
+  '/wedding-rings/emerald',
+  '/wedding-rings/marquise',
+  '/wedding-rings/oval',
+  '/wedding-rings/pear',
+  '/wedding-rings/platinum',
+  '/wedding-rings/princess',
+  '/wedding-rings/mens',
+  '/diamond-rings',
+  '/diamond-rings/cluster-rings',
+  '/diamond-rings/halo-rings',
+  '/diamond-rings/two-stone-rings',
+  '/diamond-rings?filter_param=5.473',
+  '/diamond-rings/couples',
+  '/diamond-rings/five-stone-rings',
+  '/diamond-rings/seven-stone-rings',
+  '/diamond-rings/bands',
+  '/diamond-rings/half-eternity-rings',
+  '/diamond-rings/promise-rings',
+  '/diamond-rings/full-eternity-rings',
+  '/diamond-rings/eternity-rings',
+  '/diamond-rings/trilogy-rings',
+  '/diamond-rings?filter_param=5.533',
+  '/diamond-rings/stacking-ring',
+  '/diamond-rings/flower-diamond',
+  '/diamond-rings?filter_param=5.162',
+  '/diamond-rings/gemstone-rings',
+  '/diamond-rings/baguette',
+  '/earrings',
+  '/earrings/stud-earrings',
+  '/earrings/halo-earrings',
+  '/earrings/drop-earrings',
+  '/earrings/hoop-earrings',
+  '/earrings/designer-earrings',
+  '/earrings?filter_param=5.153',
+  '/earrings/yellow-gold',
+  '/earrings/lab-grown-diamond',
+  '/earrings/black-diamond',
+  '/earrings/white-gold',
+  '/earrings/rose-gold',
+  '/earrings/silver',
+  '/pendants/cross-pendants',
+  '/pendants/heart-pendants',
+  '/pendants/circle-pendants',
+  '/pendants/halo-pendants',
+  '/pendants/gemstone-necklaces',
+  '/pendants/designer-pendants',
+  '/pendants?filter_param=5.90',
+  '/pendants/initial-diamond-pendant',
+  '/pendants?filter_param=5.94',
+  '/pendants/drop-pendants',
+  '/pendants/personalise-pendants',
+  '/pendants?filter_param=5.501',
+  '/pendants/number-pendants',
+  '/pendants/yellow-gold',
+  '/pendants/platinum',
+  '/pendants/lab-grown-diamond',
+  '/pendants/silver',
+  '/pendants/blue-sapphire',
+  '/pendants/ruby',
+  '/pendants/emeralds',
+  '/bracelets',
+  '/bracelets/friendship-bracelet',
+  '/bracelets/tennis-bracelets',
+  '/bracelets/delicate-bracelet',
+  '/bracelets/charms',
+  '/bracelets/bangles',
+  '/bracelets/silver',
+  '/bracelets/rose-gold',
+  '/bracelets/white-gold',
+  '/bracelets/yellow-gold',
+  '/bracelets/platinum'
 ];
 
 const PRODUCTS_PER_CATEGORY = 96;
 
 test('Check first 96 products per category for 200/404 status', async ({ page }) => {
 
-  test.setTimeout(60 * 60 * 1000); 
+  test.setTimeout(3 * 60 * 60 * 1000); // 3 hours (safe buffer for 1.5hr+ runs)
 
-  const finalReport = [];
+  const finalReport = []; // { category, url, status, ok }
 
+  // ----------------------------------------------------------
+  // 🔁 Har category ke liye products load karke links nikalna
+  // ----------------------------------------------------------
   async function loadCategoryProducts(categoryPath) {
     await page.goto(`${baseURL}${categoryPath}`, {
       waitUntil: 'domcontentloaded'
@@ -98,25 +215,48 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
     return uniqueLinks;
   }
 
+  // ----------------------------------------------------------
+  // 🖱️ Har product ko OPEN (click/navigate) karke status check karna
+  //     — sirf HTTP status hi kaafi nahi hai, kyunki ye site "soft 404"
+  //     deti hai (status 200 milta hai lekin page pe "Page Not Found"
+  //     content dikhta hai). Isliye page content bhi check karna padta hai.
+  // ----------------------------------------------------------
   async function checkStatusByClick(url) {
     try {
       const response = await page.goto(url, {
-        waitUntil: 'commit',
+        waitUntil: 'domcontentloaded', // content check karne ke liye load hona zaroori hai
         timeout: 20000
       });
 
+      const httpStatus = response ? response.status() : null;
+
+      // 🔍 "Page Not Found" wala soft-404 content check
+      const isSoftNotFound = await page
+        .getByText(/Page Not Found|Broken Or Doesn't Exist/i)
+        .first()
+        .isVisible()
+        .catch(() => false);
+
       if (!response) {
-        return 'ERROR: No response received';
+        return { code: '404', isBroken: true };
       }
 
-      return response.status();
+      if (isSoftNotFound || httpStatus === 404) {
+        return { code: '404', isBroken: true };
+      }
+
+      if (httpStatus !== 200) {
+        return { code: httpStatus, isBroken: true };
+      }
+
+      return { code: 200, isBroken: false };
     } catch (err) {
-      return `ERROR: ${err.message.split('\n')[0]}`;
+      return { code: `ERROR: ${err.message.split('\n')[0]}`, isBroken: true };
     }
   }
 
   // ----------------------------------------------------------
-  // 🚀 MAIN LOOP
+  // 🚀 MAIN LOOP — sabhi categories process karo
   // ----------------------------------------------------------
   for (const categoryPath of categories) {
     console.log(`\n===== Processing category: ${categoryPath} =====`);
@@ -125,12 +265,19 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
 
     for (let i = 0; i < productLinks.length; i++) {
       const url = productLinks[i];
-      const status = await checkStatusByClick(url);
-      const ok = status === 200;
+      const result = await checkStatusByClick(url);
 
-      finalReport.push({ category: categoryPath, url, status, ok });
+      finalReport.push({
+        category: categoryPath,
+        url,
+        status: result.code,
+        ok: !result.isBroken
+      });
 
-      console.log(`  [${i + 1}/${productLinks.length}] ${status} - ${url}`);
+      // 👇 Sirf 404 / broken wale hi print honge, 200 wale chup rahenge
+      if (result.isBroken) {
+        console.log(`404 - ${url}`);
+      }
 
       await page.waitForTimeout(100);
     }
@@ -147,9 +294,9 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
   console.log(`🚨 Broken (404): ${brokenLinks.length}`);
 
   if (brokenLinks.length > 0) {
-    console.log(`\n----- BROKEN / 404    LINKS -----`);
-    brokenLinks.forEach((r, i) => {
-      console.log(`${i + 1}. [${r.category}] Status: ${r.status} -> ${r.url}`);
+    console.log(`\n----- BROKEN (404) LINKS -----`);
+    brokenLinks.forEach((r) => {
+      console.log(`404 - ${r.url}`);
     });
   }
 
