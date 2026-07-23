@@ -118,7 +118,8 @@ const categories = [
   '/bracelets/rose-gold',
   '/bracelets/white-gold',
   '/bracelets/yellow-gold',
-  '/bracelets/platinum'
+  '/bracelets/platinum',
+  '/ready-to-deliver'
 ];
 
 const PRODUCTS_PER_CATEGORY = 96;
