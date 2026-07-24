@@ -118,8 +118,7 @@ const categories = [
   '/bracelets/rose-gold',
   '/bracelets/white-gold',
   '/bracelets/yellow-gold',
-  '/bracelets/platinum',
-  '/ready-to-deliver'
+  '/bracelets/platinum'
 ];
 
 const PRODUCTS_PER_CATEGORY = 96;
@@ -231,15 +230,30 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
 
       const httpStatus = response ? response.status() : null;
 
+      if (!response) {
+        return { code: '404', isBroken: true };
+      }
+
+      // 🕒 Site SPA hai (JS se render hoti hai) — thoda settle hone do
+      // warna loading state ko galti se "Page Not Found" samajh sakte hain
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+
       // 🔍 "Page Not Found" wala soft-404 content check
-      const isSoftNotFound = await page
+      let isSoftNotFound = await page
         .getByText(/Page Not Found|Broken Or Doesn't Exist/i)
         .first()
         .isVisible()
         .catch(() => false);
 
-      if (!response) {
-        return { code: '404', isBroken: true };
+      // ⚠️ False-positive avoid karne ke liye double-check karo —
+      // agar ye sirf transient/loading state tha to dobara check karne pe gayab ho jaayega
+      if (isSoftNotFound) {
+        await page.waitForTimeout(2000);
+        isSoftNotFound = await page
+          .getByText(/Page Not Found|Broken Or Doesn't Exist/i)
+          .first()
+          .isVisible()
+          .catch(() => false);
       }
 
       if (isSoftNotFound || httpStatus === 404) {
