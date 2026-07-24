@@ -130,9 +130,6 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
 
   const finalReport = []; // { category, url, status, ok }
 
-  // ----------------------------------------------------------
-  // 🔁 Har category ke liye products load karke links nikalna
-  // ----------------------------------------------------------
   async function loadCategoryProducts(categoryPath) {
     await page.goto(`${baseURL}${categoryPath}`, {
       waitUntil: 'domcontentloaded'
@@ -216,12 +213,6 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
     return uniqueLinks;
   }
 
-  // ----------------------------------------------------------
-  // 🖱️ Har product ko OPEN (click/navigate) karke status check karna
-  //     — sirf HTTP status hi kaafi nahi hai, kyunki ye site "soft 404"
-  //     deti hai (status 200 milta hai lekin page pe "Page Not Found"
-  //     content dikhta hai). Isliye page content bhi check karna padta hai.
-  // ----------------------------------------------------------
   async function checkStatusByClick(url) {
     try {
       const response = await page.goto(url, {
@@ -235,8 +226,6 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
         return { code: '404', isBroken: true };
       }
 
-      // 🕒 Site SPA hai (JS se render hoti hai) — thoda settle hone do
-      // warna loading state ko galti se "Page Not Found" samajh sakte hain
       await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
 
       // 🔍 "Page Not Found" wala soft-404 content check
@@ -246,8 +235,6 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
         .isVisible()
         .catch(() => false);
 
-      // ⚠️ False-positive avoid karne ke liye double-check karo —
-      // agar ye sirf transient/loading state tha to dobara check karne pe gayab ho jaayega
       if (isSoftNotFound) {
         await page.waitForTimeout(2000);
         isSoftNotFound = await page
@@ -271,9 +258,6 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
     }
   }
 
-  // ----------------------------------------------------------
-  // 🚀 MAIN LOOP — sabhi categories process karo
-  // ----------------------------------------------------------
   for (const categoryPath of categories) {
     console.log(`\n===== Processing category: ${categoryPath} =====`);
 
@@ -290,7 +274,6 @@ test('Check first 96 products per category for 200/404 status', async ({ page })
         ok: !result.isBroken
       });
 
-      // 👇 Sirf 404 / broken wale hi print honge, 200 wale chup rahenge
       if (result.isBroken) {
         console.log(`404 - ${url}`);
       }
